@@ -38,12 +38,40 @@ function isPrime1(n){
   return `${n} is a prime number`;
 }
 
-console.log(isPrime1(8));
+// console.log(isPrime1(29));
+
+// list all the primes(easy method)
+function isPrime2(n) {
+  if (n < 2) return false;
+
+  for (let i = 2; i < n; i++) {
+    if (n % i === 0) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+function listPrimes(limit) {
+  const primes = [];
+  for (let i = 2; i <= limit; i++) {
+    if (isPrime2(i)) {
+      primes.push(i);
+    }
+  }
+  return primes;
+}
+
+// Example usage:
+const n = 150;
+console.log(`Prime numbers up to ${n}:`, listPrimes(n));
+
 
 // ###############################################################################################################################
 // function to list prime numbers upto the given number
 
-function isPrime2(num) {
+function isPrime3(num) {
   if (num <= 1) return false;
   if (num <= 3) return true;
   if (num % 2 === 0 || num % 3 === 0) return false;
@@ -54,14 +82,14 @@ function isPrime2(num) {
   return true;
 }
 
-function listPrimes(limit) {
+function listPrimes1(limit) {
   const primes = [];
   for (let i = 2; i <= limit; i++) {
-    if (isPrime(i)) primes.push(i);
+    if (isPrime3(i)) primes.push(i);
   }
   return primes;
 }
 
 // Example usage:
-// console.log(listPrimes(50)); 
+// console.log("Prime Numbers: ", listPrimes1(50)); 
 // Output: [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]
