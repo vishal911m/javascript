@@ -1004,4 +1004,19 @@ const sum = numbers.reduce((accumulator, currentValue) => (
    accumulator + currentValue
 ), 0); // 0 is the initial value
 
-console.log(sum);
+// console.log(sum);
+
+// sum of numbers without using reduce function
+
+// function sumOfNumbers(arr){
+//   let sum = 0;
+
+//   for(i=0; i<arr.length; i++){
+//     sum += arr[i];
+//   }
+
+//   return sum;
+// }
+
+// const array = [1,5,9];
+// console.log(sumOfNumbers(array));
