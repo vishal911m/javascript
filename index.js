@@ -995,3 +995,13 @@
 // filter below age 26 json value (name,age )
 
 //youtube video - end
+
+// sum of the given numbers using reduce function - cognizant interview
+
+const numbers = [1, 5, 9];
+
+const sum = numbers.reduce((accumulator, currentValue) => (
+   accumulator + currentValue
+), 0); // 0 is the initial value
+
+console.log(sum);
