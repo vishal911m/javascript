@@ -214,16 +214,16 @@
 // }
 // x();
 
-function x(){
-  var a=7;
-  return function y(){
-    console.log(a);
-  }
-  // y();
-}
-var z = x();
-console.log(z);
-z();
+// function x(){
+//   var a=7;
+//   return function y(){
+//     console.log(a);
+//   }
+//   // y();
+// }
+// var z = x();
+// console.log(z);  
+// z();
 
 // function z(){
 //   var b=900;
