@@ -317,21 +317,24 @@
 
 function counter(){
   var count = 0;
-  return function incrementCounter(){
+  this.incrementCounter = function(){
     count++;
     console.log(count);
   } 
+  this.decrementCounter = function(){
+    count--;
+    console.log(count);
+  } 
 }
-// console.log(count); //For data hiding and privacy, we put the whole code into the function, to form a closure. So if we try to 
-// console log the variable "count" we get error
+var counter1 = new counter();
 
-var counter1 = counter();
-counter1();
-counter1();
+counter1.incrementCounter();
+counter1.incrementCounter();
+counter1.decrementCounter();
 
-var counter2 = counter();
-counter2();
-counter2();
+
+
+
 
 // ep12 - end
 
