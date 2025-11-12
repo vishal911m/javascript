@@ -313,6 +313,28 @@
 
 //ep11-end
 
+// ep12
+
+function counter(){
+  var count = 0;
+  return function incrementCounter(){
+    count++;
+    console.log(count);
+  } 
+}
+// console.log(count); //For data hiding and privacy, we put the whole code into the function, to form a closure. So if we try to 
+// console log the variable "count" we get error
+
+var counter1 = counter();
+counter1();
+counter1();
+
+var counter2 = counter();
+counter2();
+counter2();
+
+// ep12 - end
+
 //gpt
 
 // function example() {
