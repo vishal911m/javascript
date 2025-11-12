@@ -1033,11 +1033,11 @@ var y = a();  // once this a execution has finished, the memory of x is supposed
 
 // sum of the given numbers using reduce function - cognizant interview
 
-const numbers = [1, 5, 9];
+// const numbers = [1, 5, 9];
 
-const sum = numbers.reduce((accumulator, currentValue) => (
-   accumulator + currentValue
-), 0); // 0 is the initial value
+// const sum = numbers.reduce((accumulator, currentValue) => (
+//    accumulator + currentValue
+// ), 0); // 0 is the initial value
 
 // console.log(sum);
 
@@ -1055,3 +1055,12 @@ const sum = numbers.reduce((accumulator, currentValue) => (
 
 // const array = [1,5,9];
 // console.log(sumOfNumbers(array));
+
+
+// map, filter, reduce example:
+
+const numbers = [1, 2, 3, 4];
+
+const doubled = numbers.map(num => num * 2);     // map() takes a callback
+const evens = numbers.filter(num => num % 2 === 0); // filter()
+const sum = numbers.reduce((acc, num) => acc + num, 0); // reduce()
