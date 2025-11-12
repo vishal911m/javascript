@@ -332,7 +332,17 @@ counter1.incrementCounter();
 counter1.incrementCounter();
 counter1.decrementCounter();
 
+// Garbage collector example
 
+function a(){
+  var x= 0;
+  return function b(){
+    console.log(x);
+  }
+}
+
+var y = a();  // once this a execution has finished, the memory of x is supposed to be deleted, but since we have formed a closure
+// since we have b referencing x, that means it cannot freeup b. So if we form more closures, it accumulates more memory.
 
 
 
