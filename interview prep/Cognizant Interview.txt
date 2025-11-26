@@ -556,7 +556,8 @@ When accessToken expires, frontend requests a new one using the cookie-based ref
 
 Q10: What is CORS?
 
-A: CORS (Cross-Origin Resource Sharing) is a browser security mechanism that controls which domains are allowed to access resources (like APIs, images, or fonts) on a different domain.
+A: CORS (Cross-Origin Resource Sharing) is a browser security mechanism that controls which domains are allowed to access resources 
+(like APIs, images, or fonts) on a different domain.
 
 In simple terms:
 
@@ -581,7 +582,8 @@ That’s where CORS comes in — it’s a way for the backend to say:
 
 ⚙️ How It Works
 
-When your frontend makes a cross-origin request, the browser sends a preflight request (an OPTIONS request) to the backend asking for permission.
+When your frontend makes a cross-origin request, the browser sends a preflight request (an OPTIONS request) to the backend asking for 
+permission.
 
 Example:
 

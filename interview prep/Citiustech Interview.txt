@@ -1,19 +1,258 @@
+Interview questions: 
+
+1. Tell me about react, SSG, ISG, code to write prime numbers, largest number in an array
+
+2. How do you cache API calls?
+
+3. Higher order functions
+
+4. Have you led or mentored a team?
+
+5. Have you discussed with clients regarding their requirements? 
+
+6. What is middleware?
+
+7. Have you used meta data tags?
+
+8. What is linting, tree shaking
+
+9. How do you set app to production and development mode?
+
+10. Next.js
+
+11. What are the advantages and disadvantages of using Tailwind Css
+
+12. Have you used Redux? Tell me about Context API.
+
 Self Introduction (Professional & Confident Tone)
 
-Hi, I’m Vishal. I have around 6 years of experience in software development, primarily focused on building data-driven and real-time web applications.
+I’m Vishal, an IT professional with 8 years of experience, including 6 years in web development and 2 years in PLC programming and industrial 
+automation.
 
-I started my career at Merisem Industries, where I developed a data acquisition system using Python, MQTT, and MySQL to collect and monitor live industrial machine data. That experience helped me build a strong foundation in backend logic, APIs, and real-time data processing.
+Currently working at SourceSol Interactive on a client project for Windmill Technology, utilizing React and Next.js for frontend development 
+and Node.js with Express for backend services.
 
-Later, at Diksha Solutions, I transitioned into frontend development using React.js, where I built modules like user authentication, dashboards, and responsive interfaces for industrial productivity applications. I also gained hands-on experience integrating APIs and improving UI/UX performance.
+My previous work experience was at Diksha Solutions, in project ThingsCode where I implemented JWT authentication, built responsive charts 
+visualizations, and optimized app performance through efficient global state management using Context API and memoization.
 
-In my latest role as an Associate Engineer at Diksha Solutions, I worked on ThingsCode, an ERP-lite application built using the MERN stack. I was responsible for building secure JWT authentication, responsive data visualization with Recharts, and managing global states efficiently using Context API and memoization to optimize rendering.
+I’m now looking for a challenging frontend or full-stack role where I can leverage my MERN expertise and continue to grow technically.
+I possess strong interpersonal and analytical skills, enabling me to quickly adapt to new ideas and technologies. 
+I believe in delivering quality work on time
+I'm very enthusistic to discuss more about the job and what it involves.
 
-Alongside my professional experience, I’ve been actively upskilling and building personal projects, including CashTrack, MonitR, and FoodVilla, where I’ve implemented real-time updates using WebSockets, server-side rendering, and deployed full-stack apps using Render and Vercel.
+Alongside my professional experience, I’ve been actively upskilling on production deployments in Vercel and Render for frontend and backend.
 
-I’m passionate about writing clean, maintainable code and developing scalable, performant front-end applications that deliver a smooth user experience. I’m now looking for a challenging frontend or full-stack role where I can leverage my MERN expertise and continue to grow technically.
+I started my career at Merisem Industries, where I developed a data acquisition system using Python, MQTT, and MySQL to collect and monitor 
+live industrial machine data. That experience helped me build a strong foundation in backend logic, APIs, and real-time data processing.
+
+Later, at Diksha Solutions, I transitioned into frontend development using React.js, where I built modules like user authentication, 
+dashboards, and responsive interfaces for industrial productivity applications. I also gained hands-on experience integrating APIs and 
+improving UI/UX performance.
+
+In my latest role as an Associate Engineer at Diksha Solutions, I worked on ThingsCode, an ERP-lite application built using the MERN stack. 
+I was responsible for building secure JWT authentication, responsive data visualization with Recharts, and managing global states efficiently 
+using Context API and memoization to optimize rendering.
+
+
+and building personal projects, including CashTrack, MonitR, and 
+FoodVilla, where I’ve implemented real-time updates using WebSockets, server-side rendering, and deployed full-stack apps using Render and 
+Vercel.
+
+I’m passionate about writing clean, maintainable code and developing scalable, performant front-end applications that deliver a smooth user 
+experience. 
+
+I’m now looking for a challenging frontend or full-stack role where I can leverage my MERN expertise and continue to grow technically.
+I possess strong interpersonal and analytical skills, enabling me to quickly adapt to new ideas and technologies. 
+I believe in delivering quality work on time
+I'm very enthusistic to discuss more about the job and what it involves.
 
 🎯 Shorter Version (for quick HR or recruiter intro)
 
-Hi, I’m Vishal. I have about 6 years of experience in full-stack web development, mainly focused on the MERN stack. I’ve worked on industrial automation and workforce management applications, handling everything from API integration and frontend performance optimization to real-time data handling.
+Hi, I’m Vishal. I have about 6 years of experience in full-stack web development, mainly focused on the MERN stack. I’ve worked on industrial 
+automation and workforce management applications, handling everything from API integration and frontend performance optimization to real-time 
+data handling.
 
-I’m skilled in React.js, Node.js, and MongoDB, and I enjoy building scalable, user-friendly applications. I’ve also deployed multiple personal projects to production using Render and Vercel, focusing on clean architecture and performance.
+I’m skilled in React.js, Node.js, and MongoDB, and I enjoy building scalable, user-friendly applications. I’ve also deployed multiple personal 
+projects to production using Render and Vercel, focusing on clean architecture and performance.
+
+Answers: 
+
+A: 1. React
+
+“React is a JavaScript library for building user interfaces, developed by Meta.
+It uses a component-based architecture, where the UI is divided into small, reusable pieces. React uses a virtual DOM for efficient updates 
+and supports unidirectional data flow. It allows developers to build fast, dynamic, and maintainable web applications.”
+
+2. How do you cache API calls?
+
+A: Short Interview Summary
+
+“I usually cache API calls by storing the response in memory or localStorage on the frontend. For larger apps, I prefer using React Query or 
+SWR for automatic caching and revalidation. On the backend, I use Redis to cache frequent or heavy API responses, improving both performance 
+and scalability.”
+
+3: A function that take another function as its argument is called higher order function.
+
+function x(){
+  console.log("Hello there");
+}
+
+function y(x){
+  x();
+}
+
+4: Yes, in my previous project at Diksha Solutions, I had the opportunity to mentor a few junior developers and guide them in React 
+development and API integration.
+
+My main focus was on helping them understand component structure, state management using Context API, and best practices like memoization 
+and reusable components to improve performance.
+
+I also conducted short code review sessions to maintain code quality and shared knowledge about secure JWT authentication and efficient data 
+visualization with Recharts — both of which were key parts of our project.
+
+I enjoyed mentoring because it strengthened the overall team output and helped new members ramp up faster, while also improving my own 
+communication and leadership skills.
+
+5: Yes, I have. During my time at Diksha Solutions, I was often involved in discussions with clients to understand their requirements and 
+clarify technical feasibility.
+
+For example, when we were building a React-based dashboard with JWT authentication and data visualization using Recharts, I interacted with 
+the client to gather details on what kind of data insights they wanted, how frequently the data should refresh, and what performance 
+expectations they had.
+
+After gathering requirements, I documented them clearly, shared possible UI mockups, and confirmed functionality before moving into 
+development. This helped avoid rework and ensured that the delivered product matched the client’s expectations.
+
+Software Development Lifecycle - Requirement analysis, Planning, Design, Implementation(coding), Testing, Deployment and Maintenance
+
+6: Middleware is a function that sits between the request and response cycle. It can modify the request or response, perform checks (like 
+authentication or validation), or log details before passing control to the next function or route.
+
+JWT is a compact and secure way to transmit information between client and server as a digitally signed token.
+Commonly used for authentication and authorization in modern web apps.
+
+How JWT Works (Step-by-Step)
+
+User logs in with username/password.
+
+Server verifies credentials and generates a JWT (signed with a secret key).
+
+Server sends this token to the client (usually stored in localStorage, sessionStorage, or cookies).
+
+For future requests, the client sends this token in the Authorization header (Bearer token).
+
+The server verifies the token’s signature to ensure it’s valid.
+
+If valid, the request proceeds; otherwise, the server returns a 401 Unauthorized.
+
+7: Meta Tags in HTML
+
+Sometimes “meta” is used in a different context — HTML.
+
+Meta tags provide metadata about a web page (information about the page, not visible to users).
+Purpose:
+
+Helps browsers and search engines understand the page.
+
+Controls how the page behaves (like responsive scaling).
+
+Improves SEO (through meta descriptions, keywords, etc.).
+
+8:Linting
+Definition
+Linting is the process of analyzing your code to find errors, bugs, or style issues before the code runs.
+
+It’s like a spell-checker for your code — it helps maintain clean, consistent, and error-free JavaScript.
+
+How It Works
+
+A linter scans your source code and checks it against a set of rules (like variable naming, unused imports, missing semicolons, etc.).
+
+If it finds issues, it warns or errors out — depending on configuration
+
+Tools Used
+
+ESLint → for JavaScript/React
+
+Prettier → for consistent formatting
+
+TSLint → (old, now merged with ESLint for TypeScript)
+
+Tree Shaking
+Definition
+
+Tree shaking is the process of removing unused or “dead” code from your final JavaScript bundle to make it smaller and faster.
+It’s a feature used by bundlers like Webpack, Rollup, or Parcel during the build process.
+
+How It Works
+
+Modern JavaScript uses ES Modules (import / export).
+
+The bundler analyzes which imports and exports are actually used.
+
+It “shakes off” unused parts of the dependency tree.
+
+9: In React, I use environment files like .env.development and .env.production to set different API URLs and build configurations.
+I run the app in development using npm start and generate a production-optimized build using npm run build.
+
+On the backend (Node.js), I set NODE_ENV to development or production and load environment variables with the dotenv package.
+The production mode disables debugging and enables performance optimizations.
+
+10: Yes, I’ve worked on improving SEO, especially in my Next.js project. Since Next.js supports Server-Side Rendering (SSR) and 
+Static Site Generation (SSG), I used those features to make pages SEO-friendly.
+
+I also optimized meta tags, title tags, Open Graph tags, and improved page performance by lazy-loading images and optimizing bundles.
+
+Additionally, I made sure the app had proper semantic HTML, descriptive alt attributes for images, and a sitemap and robots.txt for better 
+search engine indexing.
+
+11. What are the advantages and disadvantages of using Tailwind Css
+
+A: “Tailwind CSS is great for building fast, consistent, and responsive UIs with minimal custom CSS. It’s highly customizable and works well 
+with modern frameworks like React. However, it can make your code look cluttered and has a slight learning curve in the beginning.”
+
+Advantages of Tailwind CSS
+
+Utility-first approach:
+Tailwind provides low-level utility classes (like flex, mt-4, text-center) that let you build complex designs directly in your markup without 
+writing custom CSS files.
+
+Highly customizable:
+You can easily configure your design system in the tailwind.config.js — setting colors, spacing, fonts, breakpoints, etc., to match your 
+project’s branding.
+
+Faster development:
+Since you don’t switch between CSS and JSX files often, UI building becomes much quicker, especially for prototypes and component-based 
+frameworks like React or Next.js.
+
+Automatic responsive design:
+Tailwind’s responsive utilities (like md:w-1/2 or lg:flex) make it straightforward to create mobile-friendly layouts.
+
+Consistent styling:
+Utility classes enforce a consistent design system across the app, reducing style drift and “magic numbers.”
+
+No naming conflicts:
+You don’t have to worry about class name collisions or creating complicated naming conventions (like BEM).
+
+Tree-shaking support:
+Tailwind removes unused CSS during build time, which keeps the final CSS bundle small and optimized.
+
+Disadvantages of Tailwind CSS
+
+Readability concerns:
+JSX can look cluttered because of too many class names, especially in complex components.
+
+<div className="flex justify-between items-center p-4 bg-gray-100 rounded-lg shadow-md">
+
+
+Learning curve:
+Beginners need some time to memorize commonly used classes and breakpoints.
+
+Inline style feel:
+Some developers feel it mixes style and structure, making markup less clean or harder to scan.
+
+Less semantic separation:
+Because styling happens in JSX instead of CSS files, design and logic can get intertwined if not managed properly.
+
+Over-customization can get complex:
+Deep custom configurations in tailwind.config.js can become hard to maintain if the project grows too large.

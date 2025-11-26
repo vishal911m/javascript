@@ -1,3 +1,18 @@
+1: “How do you manage styling when creating a React component? Do you create a separate CSS file for it?”
+
+2: “How do you handle API calls in your application? For example, if you call a login API on clicking ‘Submit’, how do you handle the 
+response?”
+
+3: how will you handle multiple api calls? how do you change the promised one after another? (.then) If you make a first api call, if the 
+first is successful, then in (.then) you make the second api call. If the second api call fails, then what happens to the third one? will it
+get called or not called. What happend in the second scenario(promise.all) ... lets say if two are successful and one is failed, then what 
+happens? will promise.all give "resolved" or "rejected"
+
+4: What is your understanding of React architecture? How do things work in React?
+
+5: What happens when a parent component re-renders? Do its child components also re-render? If yes, how can we prevent unnecessary 
+re-renders?
+
 Q1: “How do you manage styling when creating a React component? Do you create a separate CSS file for it?”
 
 A: It depends on the project’s architecture and scale.
@@ -5,3 +20,281 @@ For smaller components or apps, I might use a separate CSS or CSS Module file.
 For scalable or design-system-based applications, I prefer using utility-first frameworks like Tailwind CSS, or CSS-in-JS libraries like 
 Styled Components or Emotion for better component encapsulation and theming.
 My main goal is always clean, maintainable, and scalable UI design.
+
+Q2: “How do you handle API calls in your application? For example, if you call a login API on clicking ‘Submit’, how do you handle the 
+response?”
+
+A: I handle API calls using a centralized service layer — usually with Axios or fetch — and manage responses using async/await.
+
+For the login flow, when the user clicks the “Submit” button, I trigger an async function that:
+
+Sends credentials to the backend API.
+
+Awaits the response.
+
+Handles success (e.g., storing JWT token, redirecting the user).
+
+Handles error (e.g., showing toast notifications or inline error messages).
+
+I also use React’s state or Context API to manage user data globally, and sometimes tools like React Query for caching and synchronization.
+
+Summary:
+“I handle API calls through a reusable Axios service.
+When a user clicks ‘Submit’, I trigger an async function that awaits the response, handles success (updates state, redirects, stores token), 
+and handles failure (shows error messages).
+For global data like authentication, I manage state through Context or React Query.
+My focus is always on clean separation of concerns — UI handles presentation, services handle network logic.”
+
+Q3: how will you handle multiple api calls? how do you change the promised one after another? (.then) If you make a first api call, if the 
+first is successful, then in (.then) you make the second api call. If the second api call fails, then what happens to the third one? will it
+get called or not called. What happend in the second scenario(promise.all) ... lets say if two are successful and one is failed, then what 
+happens? will promise.all give "resolved" or "rejected"
+
+A: “If I chain API calls using .then(), each depends on the previous one.
+If one fails — say, the second — the chain breaks and later calls don’t run.
+
+But with Promise.all(), all APIs run in parallel, and if any one fails, the entire Promise.all rejects.
+
+If I need to handle partial success (some APIs fail, some succeed), I use Promise.allSettled() — which gives me the status of each call 
+individually.”
+
+Q4: What is your understanding of React architecture? How do things work in React?
+
+Summary:
+“React follows a component-based architecture where the UI is divided into small, reusable components that manage their own state and props.
+
+When a component’s state changes, React re-renders it and uses a Virtual DOM to efficiently update only the parts of the real DOM that changed.
+
+React uses a unidirectional data flow, making the app predictable and easier to debug. For global data or shared states, I use Context API or 
+libraries like Redux or Zustand.
+
+Under the hood, React’s Fiber architecture handles rendering efficiently by breaking updates into smaller units of work and prioritizing them 
+for smoother performance.
+
+Overall, I view React architecture as a combination of component isolation, efficient rendering, predictable data flow, and flexible state 
+management — all working together for scalable and performant frontend applications.”
+
+A: Here’s a complete interview-ready answer with examples 👇
+
+🧩 1. React is a component-based architecture
+
+React applications are built as a tree of reusable components, where each component:
+
+Manages its own state and props
+
+Has a render method (JSX → Virtual DOM)
+
+Can be composed together to form larger UI structures
+
+Each component is isolated, but they communicate top-down via props, and share data sideways or globally via Context or state management 
+libraries.Each component is isolated, but they communicate top-down via props, and share data sideways or globally via Context or state 
+management libraries.
+
+⚙️ 2. React’s core engine: Virtual DOM + Reconciliation (Fiber)
+
+React doesn’t update the real DOM directly (because it’s slow).
+Instead, it uses a Virtual DOM — a lightweight copy of the actual DOM in memory.
+
+How it works:
+
+When your state changes → React re-renders the component → creates a new Virtual DOM tree.
+
+React compares it with the previous Virtual DOM (using diffing algorithm)
+
+It finds what actually changed and efficiently updates only that part in the real DOM.
+
+⚡ This process is called Reconciliation and is managed by React’s internal Fiber architecture — which allows React to pause, resume, or prioritize UI updates (important for performance and smooth UX).
+
+🧠 3. React’s main building blocks
+Concept	Description
+Components	Reusable UI blocks (functional or class-based)
+JSX	JavaScript syntax extension that looks like HTML
+Props	Read-only data passed from parent to child
+State	Mutable data that defines component behavior
+Context API	For passing data globally without prop drilling
+Hooks	Functions like useState, useEffect, useMemo for managing logic inside functional components
+
+4. Data Flow: Unidirectional (Top-down)
+
+React follows unidirectional data flow, meaning:
+
+Data flows from parent → child via props.
+
+Child components can send updates up using callback functions.
+
+This makes the data flow predictable and easy to debug.
+
+🚀 5. State Management in React architecture
+
+Small apps → use useState and useContext
+Large apps → use Redux, Zustand, or React Query for managing client-side and server-side state.
+
+React Query (now TanStack Query) helps manage:
+
+Server state (fetched from APIs)
+
+Caching
+
+Refetching and background updates
+
+🎨 6. Rendering in React
+
+React components re-render when props or state change
+
+React performs reconciliation to figure out minimal DOM updates
+
+You can optimize re-renders using:
+
+React.memo() → for pure components
+
+useMemo() / useCallback() → for memoizing expensive computations
+
+key prop in lists → for efficient diffing
+
+🧱 7. Architecture in real-world React apps
+
+In a production React app (like your ThingsCode or MonitR), you typically have:
+
+src/
+ ┣ components/      → Reusable UI blocks
+ ┣ pages/           → Route-level components
+ ┣ context/         → Global state providers
+ ┣ hooks/           → Custom reusable logic
+ ┣ services/        → API calls, axios configuration
+ ┣ utils/           → Helper functions
+ ┣ assets/          → Images, icons
+ ┗ App.js / App.tsx → Root component
+
+
+This structure keeps your app modular, scalable, and maintainable.
+
+Q5: What happens when a parent component re-renders? Do its child components also re-render? If yes, how can we prevent unnecessary 
+re-renders?
+
+A: Summary:
+
+“When a parent component re-renders, React re-renders its children by default — even if their props haven’t changed — because React reconstructs the Virtual DOM tree.
+
+However, React only updates the real DOM if differences are found.
+
+To prevent unnecessary re-renders, I use React.memo for pure components, useCallback to memoize event handlers, and useMemo for objects or computed values.
+
+This ensures components only re-render when their actual data changes, improving performance — especially in apps with large component trees like dashboards or charts.”
+
+⚙️ 1️⃣ When parent component re-renders
+
+Whenever a parent component re-renders, React will re-render all of its child components by default, because React re-evaluates the JSX tree.
+
+Even if <Child /> doesn’t receive props —
+👉 it still re-renders every time the parent re-renders.
+
+That’s because React recreates the <Child /> element in memory and goes through the Virtual DOM diffing process.
+
+⚙️ 2️⃣ React’s behavior under the hood
+
+When React re-renders a parent component:
+
+It rebuilds the Virtual DOM subtree for that component.
+
+It compares the new Virtual DOM with the previous one.
+
+If the child’s props haven’t changed, React may skip updating the actual DOM, but the child function still executes.
+
+So technically:
+
+The Child component function runs again (→ lightweight render).
+
+But if nothing changes in its Virtual DOM output, the real DOM doesn’t update.
+
+This is still a cost — especially if you have expensive children (charts, tables, large components).
+
+💡 3️⃣ Unnecessary renders happen when:
+
+Parent re-renders due to its own state change
+
+Props passed to child are new references (e.g., new function or object each time)
+
+Context or global state updates trigger subtree re-renders
+
+Inline anonymous functions in JSX cause new references
+
+Here, a new function is created on every render — so even if nothing else changes, <Child /> re-renders.
+
+🛠️ 4️⃣ How to prevent unnecessary re-renders
+
+Let’s go through five real-world optimization techniques 👇
+
+✅ (a) Use React.memo() for functional components
+
+Wrap your child component with React.memo():
+
+const Child = React.memo(function Child({ value }) {
+  console.log("Child rendered");
+  return <div>{value}</div>;
+});
+
+
+Now:
+
+React will skip re-rendering the child
+
+unless its props actually change (shallow comparison)
+
+✅ (b) Use useCallback() for stable function references
+
+If you pass functions as props to children:
+
+const handleClick = useCallback(() => {
+  setCount((c) => c + 1);
+}, []);
+
+
+Now, handleClick will have a stable reference — preventing child re-renders caused by new function objects every time.
+
+✅ (c) Use useMemo() for derived values or objects
+
+If you pass objects/arrays as props:
+
+const config = useMemo(() => ({ theme: "dark" }), []);
+
+
+This avoids new object creation on each render.
+
+✅ (d) Split large components into smaller memoized parts
+
+Break big parents into smaller components, and memoize each.
+That way, only affected subtrees re-render.
+
+✅ (e) Avoid unnecessary Context propagation
+
+Context updates trigger all consumers to re-render.
+To optimize:
+
+Split context into smaller ones (e.g., theme vs user)
+
+Or use libraries like Zustand, Jotai, or React Query for finer-grained updates.
+
+⚙️ 5️⃣ What happens to the UI (DOM)?
+
+Even if the child function re-runs in memory (Virtual DOM),
+React will only update the real DOM if it detects a difference.
+
+So in many cases:
+
+Child renders in JS memory
+
+DOM remains untouched → no visual change
+
+But CPU work still happens → performance cost in large trees
+
+🧠 6️⃣ Bonus — React 18 and concurrent rendering
+
+In React 18 (with concurrent rendering), React can now:
+
+Pause and resume rendering
+
+Skip re-rendering of lower-priority updates
+
+Batch multiple state updates automatically
+
+So React is much smarter at avoiding expensive unnecessary work.
