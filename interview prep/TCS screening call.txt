@@ -1,0 +1,238 @@
+TCS screening phone call
+
+1. Tell me about your latest project and its features
+2. Tell me the lifecycle of react component
+3. Tell me the working of node js 
+4. Tell me the use of custom hooks
+5. Tell me some of the most used hooks by you
+6. Tell me about react reconciliation
+7. Tell me about the redux
+8. 
+
+Q1. Tell me about your latest project and its features
+
+A: “In my latest project, I worked on ThingsCode, which is a full-stack React-based task and machine monitoring application. The main 
+objective of the project was to allow users to manage tasks, track machine production data, and view real-time metrics in a clean, dashboard-style interface.
+
+Frontend Features (React + Next.js + Context API)
+
+I built the entire frontend using Next.js, React, and Tailwind CSS.
+
+I implemented JWT authentication, including login, registration, token storage in cookies, and user session management.
+
+I used Context API (userContext.js and taskContext.js) to manage global state for:
+
+User authentication
+
+Task creation/update/delete
+
+Machine data and production statistics
+
+For performance, I optimized renders using:
+
+React.memo
+
+Dependency-based state separation
+
+Avoiding unnecessary API calls by caching results
+
+Dashboard & Data Visualization
+
+I built a responsive dashboard using Recharts to visualize:
+
+Daily production counts
+
+Rejection counts
+
+Machine performance graphs
+
+Historic month-wise trends
+
+The charts automatically update based on user-selected filters (like month/year).
+
+Real-Time Updates (WebSockets)
+
+Machines constantly send job data (jobCount, rejectionCount, status).
+
+Using WebSockets, I implemented live updates so:
+
+The dashboard updates instantly
+
+The machine detail page shows real-time changes
+
+No need to refresh or manually fetch
+
+Machine Details Page
+
+Every machine has a dedicated detail page (e.g., /machine/[id]).
+
+The page shows:
+
+Machine name and type
+
+Live production + rejection counts
+
+Current tool/job in progress
+
+Historic data view (switchable UI)
+
+Backend Features (Node.js + Express + MongoDB)
+
+On the backend, I built:
+
+Complete JWT authentication
+
+User + task + machine CRUD APIs
+
+Machine → jobs → historic stats pipelines
+
+Model relationships using MongoDB:
+
+Users
+
+Machines
+
+Jobs
+
+Major Technical Challenges Solved
+
+One big challenge was merging real-time data with historic data without breaking the UI.
+To solve this:
+
+I separated historic and real-time logic into different API endpoints.
+
+I used WebSocket subscriptions only for live mode.
+
+I made the UI toggle between:
+
+live mode (websocket updates)
+
+historic mode (API fetch)
+
+This eliminated stale data and fixed UI lag issues.
+
+Result
+
+The final system feels smooth, fast, and responsive. Users can log in, create tasks, monitor their machines, and visualize production metrics 
+in real time.
+
+⭐ Shorter Version (for rapid interviews)
+
+“My latest project is ThingsCode, a React + Next.js dashboard application with real-time machine monitoring. I implemented JWT authentication, state management using Context API, responsive UI with Tailwind, and interactive production charts using Recharts. I also integrated WebSockets to get real-time machine job updates. The backend is built with Node.js, Express, and MongoDB, handling user, machine, and job data. One of the major challenges was syncing real-time and historic data, which I solved by separating WebSocket and REST logic, ensuring smooth switching without UI glitches.”
+
+If you want, I can give:
+✅ HR-friendly version
+✅ Tech lead version
+✅ 30-second elevator pitch
+Just tell me!
+
+Q3. working of node.js:
+
+A: nodejs is a runtime environment
+
+Runtime environment is an environment in which a program or application is executed , so nodejs allows you to run a javascript program 
+outside a browser like firefox or chrome.
+
+Nodejs does this by running the v8 engine which is the core of the google chrome outside the browser. Nodejs has gained a lot of attention 
+from the frontend developers , who can now build a server side application with the programming language they are familiar with, instead of 
+learning a new one
+
+Nodejs also allows you to use various npm packages which is the easiest and fastest way to use javascript modules. A module is a block of code
+that can do something. So if someone has written the code to build a calendar, a chart or table, each of them can be considered as a module, 
+if a module is registered in NPM , you can very easily bring them and integrate them into your projects, so if you want to add a calendar to 
+you blog to check what kind of posts you've written on a certain date, you dont have to write every single line of code on your own, you can 
+simply install a calendar package with npm and integrate them into a project
+
+Frameworks like expressjs and nestjs have become very popular and a lot of companies use nodejs as the backbone of their server and this is 
+because node.js runs in a single process, this means that nodejs can handle thousands of requests in a single server.
+
+When you create a new blog post, you send a request, we're going to send request to a server and node.js will handle the request and save the 
+post to the database.
+
+When someone tries to access you blog, we're gonna fetch this data from the server, so that the visitors can read your post.
+
+Q4: custom hooks
+
+A: Common hooks: useState, useEffect, useContext, useReducer, useCallback, useMemo, useRef
+
+A custom hook is basically a javascript function whose name starts with "use" 
+
+A custom hook can also call other hooks if required
+
+Why custom hooks? - Share logic - Alternative to HOC and Render props
+
+Q5: Tell me about some of the most recently used hooks in your projects
+
+A: “In my recent projects, I have worked extensively with both built-in React hooks and a few custom hooks. Some of the main hooks I used are:
+
+1. useState
+
+I use it for managing local component state like form inputs, modal visibility, and UI toggles.
+
+2. useEffect
+
+Used for side effects such as:
+
+API calls on component load
+
+Subscribing/unsubscribing WebSocket listeners
+
+Debouncing search inputs
+
+Syncing context values
+
+3. useContext
+
+I used this extensively in my ThingsCode project:
+
+userContext → login, logout, user details
+
+taskContext → fetching tasks, creating tasks, updating tasks
+It helps avoid prop-drilling and maintain global state.
+
+4. useReducer (not used)
+
+I use this when state logic gets complex—for example:
+
+Handling multiple form states
+
+Task or machine-related state updates
+
+Managing loading/error/success states cleanly
+
+5. useMemo
+
+Used for performance optimization:
+
+Memoizing expensive calculations
+
+Preventing unnecessary re-renders for derived values
+(e.g., filtering tasks or computing totals)
+
+6. useCallback
+
+Used to memoize functions:
+
+Prevents creating new function instances in every render
+
+Helps when passing callbacks into children that are memoized
+
+7. useRef
+
+I mainly use this for:
+
+Accessing DOM elements
+
+Storing previous values (without re-render)
+
+WebSocket instance reference
+
+Preventing rerenders during intervals/timeouts
+
+8. useRouter (Next.js)
+
+To navigate between pages programmatically:
+
+After login → redirect to dashboard
+
+After logout → redirect to login page
