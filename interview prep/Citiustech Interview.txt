@@ -1,0 +1,19 @@
+Self Introduction (Professional & Confident Tone)
+
+Hi, I’m Vishal. I have around 6 years of experience in software development, primarily focused on building data-driven and real-time web applications.
+
+I started my career at Merisem Industries, where I developed a data acquisition system using Python, MQTT, and MySQL to collect and monitor live industrial machine data. That experience helped me build a strong foundation in backend logic, APIs, and real-time data processing.
+
+Later, at Diksha Solutions, I transitioned into frontend development using React.js, where I built modules like user authentication, dashboards, and responsive interfaces for industrial productivity applications. I also gained hands-on experience integrating APIs and improving UI/UX performance.
+
+In my latest role as an Associate Engineer at Diksha Solutions, I worked on ThingsCode, an ERP-lite application built using the MERN stack. I was responsible for building secure JWT authentication, responsive data visualization with Recharts, and managing global states efficiently using Context API and memoization to optimize rendering.
+
+Alongside my professional experience, I’ve been actively upskilling and building personal projects, including CashTrack, MonitR, and FoodVilla, where I’ve implemented real-time updates using WebSockets, server-side rendering, and deployed full-stack apps using Render and Vercel.
+
+I’m passionate about writing clean, maintainable code and developing scalable, performant front-end applications that deliver a smooth user experience. I’m now looking for a challenging frontend or full-stack role where I can leverage my MERN expertise and continue to grow technically.
+
+🎯 Shorter Version (for quick HR or recruiter intro)
+
+Hi, I’m Vishal. I have about 6 years of experience in full-stack web development, mainly focused on the MERN stack. I’ve worked on industrial automation and workforce management applications, handling everything from API integration and frontend performance optimization to real-time data handling.
+
+I’m skilled in React.js, Node.js, and MongoDB, and I enjoy building scalable, user-friendly applications. I’ve also deployed multiple personal projects to production using Render and Vercel, focusing on clean architecture and performance.

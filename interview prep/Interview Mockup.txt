@@ -1,0 +1,160 @@
+mock interview: 
+(set1)
+1. Can you describe your experience in node.js and how you'v utilised it in your project
+
+A: In my projects, I’ve used Node.js primarily for building backend APIs and server-side logic. I like Node.js because of its non-blocking, 
+event-driven architecture, which makes it ideal for handling multiple client requests efficiently.
+
+For example, in my recent project, I built a backend using Node.js and Express that handled user authentication, job and machine data 
+management, and real-time updates.
+I implemented JWT-based authentication for secure user sessions, integrated MongoDB using Mongoose for data storage, and structured the API 
+with clear routes and controllers for maintainability.
+
+I also used middleware for request validation, error handling, and token verification, ensuring clean separation of concerns. In one of my 
+apps, I added WebSocket (Socket.io) support to enable real-time data updates on the frontend whenever new data was created on the backend.
+
+Overall, Node.js allowed me to build a scalable and responsive backend, and I’ve found it very effective when combined with frontend 
+frameworks like React or Next.js to create full-stack applications.
+
+
+
+2. have you applied react.js in your projects ? particularly in user interface design
+
+A: Yes, I’ve applied React.js extensively in my projects, particularly for building dynamic and responsive user interfaces.
+
+I like React for its component-based architecture, which makes the UI easy to scale and maintain. For example, in one of my recent projects, 
+I designed interactive dashboards where data updates in real time using React’s state management and context API. I also used React Hooks 
+like useState, useEffect, and useContext to handle component logic and API integration efficiently.
+
+For styling, I often use Tailwind CSS, which helps in quickly building clean, modern, and responsive layouts. I’ve also implemented 
+conditional rendering and dynamic components — such as modals, charts, and data cards — that adapt based on user interaction or API 
+responses.
+
+Overall, React has allowed me to create intuitive, user-friendly interfaces that provide a smooth experience while maintaining clean, 
+reusable, and modular code.
+
+
+
+3 - what is your approach to database design? particularly with mongoDB and sql databases
+
+A: My approach to database design starts with understanding the application’s data flow and relationships — how data is created, used, and 
+connected across different entities.
+
+When I work with MongoDB, I usually follow a schema design approach based on data access patterns rather than strict normalization. Since 
+MongoDB is document-oriented, I design collections that store related data together when it improves query performance — for example, 
+embedding user details or job information when frequent joins aren’t necessary. I also ensure proper use of indexes, unique constraints, 
+and schema validation using Mongoose models to maintain data integrity.
+
+In contrast, when I design for SQL databases, I follow normalization principles up to a practical level to eliminate redundancy while 
+keeping queries efficient. I define primary and foreign keys carefully to enforce relationships, and I use joins only when necessary for 
+relational data. For performance tuning, I rely on indexes, query optimization, and sometimes denormalization for heavy-read scenarios.
+
+Overall, whether I use MongoDB or SQL, my focus is on data consistency, scalability, and query efficiency, and I design schemas based on the
+ specific use case and access patterns of the application.
+
+
+
+4: can you explain your experience in agile methodologies and tools like jira?
+
+A: I’m familiar with Agile methodologies, especially the idea of working in iterative development cycles (sprints), continuously improving 
+based on feedback, and maintaining close communication within the team.
+
+In my projects, I’ve followed Agile-like workflows — such as breaking down features into smaller tasks, prioritizing work using 
+to-do / in-progress / done boards, and doing regular updates to track progress. While I haven’t used Jira extensively, I understand that 
+it’s a tool designed to manage these Agile processes — for example, tracking user stories, assigning tasks, and monitoring sprint progress.
+
+I’ve used similar tools like Trello and GitHub Projects to organize and manage my development tasks, which follow the same Agile principles. 
+I’m confident that learning and adapting to Jira would be straightforward for me since the workflow and concepts are very similar. SLDC - 
+Software Development Lifecycle - Requirement analysis, Planning, Design, Implementation(coding), Testing, Deployment and Maintenance
+
+
+(set2)
+
+5: can you describe your experience with React and how you've applied it in your projects?
+
+A: I have hands-on experience building several projects using React and Next.js for the frontend. In my projects, I’ve applied React to 
+create dynamic, modular and responsive user interfaces.
+
+For instance, in one of my full-stack MERN projects, I used React along with Tailwind CSS for building clean, responsive layouts and React 
+Context API to manage global state — like user authentication and task management — without relying on external libraries like Redux.
+
+I have integrated RESTful APIs using Axios to handle data fetching from my Node.js/Express backend. The app used features like modals, 
+real-time updates with WebSockets, and conditional rendering for authenticated routes.
+
+In another project built with Next.js, I leveraged server-side rendering for better SEO and faster load times, while maintaining reusable 
+UI components. My approach always focuses on code reusability, component-based architecture, and keeping the UI consistent and performant.
+
+
+
+6: How do you ensure the performance and scalability of your fronend application? 
+
+A: To ensure performance and scalability in my frontend applications, I focus on several key areas:
+
+-->Code Splitting & Lazy Loading:
+I use dynamic imports in React and Next.js to load components only when they’re needed. This reduces the initial bundle size and improves 
+load times.
+
+-->Memoization & State Optimization:
+I use React.memo, useMemo, and useCallback to prevent unnecessary re-renders. I also design the state flow carefully — lifting state only 
+when required and using Context API efficiently to avoid prop drilling.
+
+-->Efficient API Calls:
+I minimize API calls by caching data locally (for example, using custom hooks like LRU Cache or React Query in some cases). This improves 
+responsiveness and reduces network load.
+
+-->Image & Asset Optimization:
+I optimize images and static assets using Next.js’s built-in Image component and compression tools, ensuring faster load times.
+
+-->Scalable Folder Structure:
+I maintain a clean and modular architecture — separating UI components, hooks, and contexts — which makes the codebase easy to scale as the 
+application grows.
+
+-->Performance Monitoring:
+I use browser DevTools and Lighthouse audits to identify bottlenecks like render-blocking scripts or large bundles, and then optimize 
+accordingly. 
+
+
+
+7: What is your experience with CI/CD and how have you implemented it in your projects?
+
+A: I’ve implemented CI/CD primarily using GitHub, Render, and Vercel in my full-stack projects. My approach focuses on automating build, 
+test, and deployment processes to maintain a smooth development workflow.
+
+For example, in my MERN and Next.js projects:
+
+I connected my GitHub repository to Vercel (for the frontend) and Render (for the backend).
+
+Whenever I push new commits to the main branch, both platforms automatically trigger a build and deployment pipeline.
+
+This ensures that the latest version of my code is deployed instantly without any manual steps.
+
+I also configure environment variables in both environments to keep credentials secure and consistent across deployments.
+
+Additionally, I make sure my build passes locally before pushing to GitHub, and I often include linting and testing scripts in the CI 
+pipeline for better reliability.
+
+So overall, my experience with CI/CD is centered around automating deployment workflows using tools like GitHub Actions, Vercel, and 
+Render — ensuring quick, reliable, and error-free delivery of updates.
+
+
+
+8: Can you share your experience with MongoDB and how you've used it in your aplications?
+
+A : I’ve used MongoDB extensively in my full-stack projects as the main database for storing and managing application data. I connect to 
+MongoDB using Mongoose, which allows me to define schemas, enforce validation rules, and manage relationships efficiently.
+
+For example, in my auth-based Node.js backend, I designed collections such as Users, Machines, and Jobs.
+
+The User schema handles authentication, JWT tokens, and role-based access.
+
+The Machine and Job schemas are linked using references, allowing me to fetch related data easily using populate().
+
+I’ve also implemented indexes on frequently queried fields to improve performance.
+
+In terms of CRUD operations, I’ve built REST APIs for creating, updating, and deleting documents, and I handle errors gracefully using 
+async/await and express-async-handler.
+
+Additionally, I make use of MongoDB Atlas for cloud hosting, which helps with easy scaling, monitoring, and data backup.
+
+Overall, my experience with MongoDB involves designing efficient schemas, managing relationships between collections, and optimizing queries 
+for scalable and performant backend applications.

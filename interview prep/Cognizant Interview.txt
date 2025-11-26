@@ -1,0 +1,670 @@
+Cognizant Interview - November 8, 2025
+Q1: setTimeout
+Q2: how do you do async function in javascript?
+Q3: sum(1,2,3) - write function using reduce()
+Q4: CSS: Consider a div1 which is the outer div, now consider div2 which is 1/4th the size of the div1. Now move the div2 inside the bottom 
+right of the div1 
+Q5. Tell me the difference between flex and grid.
+Q6: What is webpack and turbopack?
+Q7: What is babel?
+Q8: What is Axios Interceptors?
+Q9: Where do you store the jwt token?
+Q10: What is CORS?
+Q11: Eslint and tree shaking
+
+Q1: Use closure and hoisting to solve the problem
+
+for(i=0; i<10; i++){
+setTimeout(()=>{console.log(i);}, 1000);
+}
+
+A: 1. let creates a new variable i for each loop iteration.
+Unlike var, which is function-scoped, let is block-scoped — meaning each {} block gets its own copy of i.
+So conceptually, JavaScript treats your loop like this:
+{
+  let i = 0;
+  setTimeout(() => console.log(i), 1000);
+}
+{
+  let i = 1;
+  setTimeout(() => console.log(i), 1000);
+}
+{
+  let i = 2;
+  setTimeout(() => console.log(i), 1000);
+}
+...
+
+2. Each setTimeout callback closes over the i in its block.
+
+A closure means:
+
+A function “remembers” the variables from the scope where it was created — even after that scope has finished executing.
+
+So for iteration 0, the arrow function () => console.log(i) remembers its own version of i (which equals 0).
+For iteration 1, another function remembers i = 1.
+And so on up to 9.
+
+3. When the timeouts run later
+
+Each callback still has access to its own captured variable i, not the shared one.
+So it prints:
+
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+
+When you do:
+
+setTimeout(() => console.log(i), 1000);
+
+
+The arrow function forms a closure over its surrounding scope.
+
+That means:
+
+It doesn’t store the value of i directly.
+
+Instead, it stores a reference to the variable i inside its scope’s environment.
+
+But since every iteration gets its own distinct environment, each callback’s i reference points to its own version of i.
+
+So when those callbacks run later, they look up i in their remembered environment, not in some shared global one.
+
+Q2: how do you do async function in javascript?
+
+A: ✅ Short Answer (for quick interviews)
+
+In JavaScript, asynchronous functions are used to handle operations that take time to complete — like API calls, file reads, or timers — 
+without blocking the main thread.
+
+We can achieve this using:
+
+Callbacks
+
+Promises
+
+Async/Await (built on top of Promises)
+
+🧠 Detailed Answer (ideal for explaining in-depth)
+
+JavaScript is single-threaded, meaning it executes one line at a time.
+To handle tasks that take time (like fetching data), JavaScript uses the event loop and asynchronous APIs to run these tasks in the background and resume execution when they finish.
+
+1️⃣ Using Callbacks
+
+A callback is a function passed as an argument to another function and executed after the async operation completes.
+
+function fetchData(callback) {
+  setTimeout(() => {
+    callback("Data received!");
+  }, 2000);
+}
+
+fetchData((data) => console.log(data)); // "Data received!" after 2 sec
+⚠️ Drawback: Callback Hell — hard to manage when many async tasks depend on each other.
+
+2️⃣ Using Promises
+Promises provide a cleaner way to handle async operations and avoid callback hell.
+
+js
+Copy code
+function fetchData() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("Data received!");
+    }, 2000);
+  });
+}
+
+fetchData()
+  .then((data) => console.log(data))
+  .catch((error) => console.error(error));
+A Promise represents a value that might be available now, later, or never.
+
+3️⃣ Using Async/Await
+Introduced in ES2017, async/await makes asynchronous code look synchronous.
+It’s built on top of Promises.
+
+js
+Copy code
+async function getData() {
+  try {
+    const response = await fetch("https://api.example.com/data");
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+getData();
+await pauses the function until the Promise resolves — making code easier to read and debug.
+
+Q3: Find the sum of sum(1,5,9);
+
+A: 
+
+const numbers = [1, 5, 9];
+
+const sum = numbers.reduce((accumulator, currentValue) => {
+  return accumulator + currentValue;
+}, 0); // 0 is the initial value
+
+console.log(sum); // Output: 15
+
+Q4: CSS: Consider a div1 which is the outer div, now consider div2 which is 1/4th the size of the div1. Now move the div2 inside the bottom 
+right of the div1 
+
+A: <div class="flex items-center justify-center w-[400px] h-[300px] border-2 border-gray-700 bg-gray-100">
+  <div class="w-1/4 h-1/4 bottom-0 right-0 bg-blue-600 text-white flex items-center justify-center rounded-md">
+    div2
+  </div>
+</div>
+
+Q5. Tell me the difference between flex and grid.
+
+A: 🧩 1. Overview
+Feature	Flexbox	Grid
+Purpose	One-dimensional layout	Two-dimensional layout
+Direction	Works in a single row or column	Works with rows and columns simultaneously
+Main use	Aligning items in a line (horizontal or vertical)	Creating full page or complex grid layouts
+CSS property	display: flex;	display: grid;
+🧠 2. Visualization
+🔸 Flexbox (1D layout)
+
+Think of Flexbox as arranging items in a single direction — like a line of buttons or cards.
+
+Example:
+
+.container {
+  display: flex;
+  gap: 10px;
+}
+
+
+👉 You control spacing, alignment, and order along one axis (either row or column).
+
+🔹 Grid (2D layout)
+
+Grid allows you to define both rows and columns — perfect for dashboards, galleries, or layouts like Pinterest.
+
+Example:
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+}
+
+
+👉 You can precisely place items in cells, similar to a spreadsheet.
+
+🧭 3. When to use what
+Use case	Choose
+Navbar, buttons, horizontal/vertical alignment	Flexbox
+Card layouts, complex page structures	Grid
+You only need control over one direction	Flexbox
+You need control over both rows and columns	Grid
+🧱 4. Example comparison
+✅ Flexbox example
+<div class="flex gap-4 justify-center">
+  <div class="bg-blue-400 p-4">1</div>
+  <div class="bg-blue-400 p-4">2</div>
+  <div class="bg-blue-400 p-4">3</div>
+</div>
+
+
+Tailwind utility: flex justify-center gap-4
+→ Items line up in one row.
+
+✅ Grid example
+<div class="grid grid-cols-3 gap-4">
+  <div class="bg-green-400 p-4">1</div>
+  <div class="bg-green-400 p-4">2</div>
+  <div class="bg-green-400 p-4">3</div>
+</div>
+
+
+Tailwind utility: grid grid-cols-3 gap-4
+→ Items form a 3-column grid.
+
+⚡ 5. Summary
+Feature	Flexbox	Grid
+Layout type	1D (row or column)	2D (rows and columns)
+Alignment	Simple alignment	Precise control of placement
+Complexity	Easier for small layouts	Better for full-page or section layouts
+Example use	Navbars, cards, forms	Dashboards, galleries, templates
+
+✅ In short:
+
+Use Flexbox for linear alignment
+Use Grid for structured layouts
+
+Q6: What is webpack and turbopack?
+
+A: ⚙️ 1. What is Webpack?
+🧠 Definition:
+
+Webpack is a module bundler for JavaScript applications.
+It takes all your files — JS, CSS, images, etc. — and bundles them into a smaller number of optimized files (usually one or a few .js bundles) to be loaded efficiently in the browser.
+
+📦 How Webpack works
+Step 1 — Entry
+
+You define an entry point (usually index.js or App.js).
+Webpack starts reading from there.
+
+entry: "./src/index.js"
+
+Step 2 — Loaders
+
+Webpack uses loaders to transform non-JS files (like CSS, images, TypeScript, JSX).
+
+Example:
+
+module: {
+  rules: [
+    { test: /\.css$/, use: ["style-loader", "css-loader"] },
+    { test: /\.jsx?$/, use: "babel-loader" }
+  ]
+}
+
+Step 3 — Plugins
+
+Plugins extend Webpack’s capabilities — e.g. optimization, environment variables, HTML generation.
+
+Example:
+
+plugins: [new HtmlWebpackPlugin({ template: "./public/index.html" })]
+
+Step 4 — Output
+
+Finally, it outputs a bundle that browsers can understand:
+
+output: {
+  filename: "bundle.js",
+  path: path.resolve(__dirname, "dist")
+}
+
+🚀 Why Webpack is used
+
+Handles module bundling
+
+Optimizes assets (minification, compression, tree-shaking)
+
+Supports modern JS (via Babel)
+
+Manages dependencies efficiently
+
+⚡ 2. What is Turbopack (Turbo)?
+🧠 Definition:
+
+Turbopack is the next-generation bundler developed by Vercel (the creators of Next.js).
+It’s designed to replace Webpack with much faster performance — written in Rust, not JavaScript.
+
+🚀 Key features of Turbopack
+Feature	Description
+⚡ Speed	Up to 700x faster than Webpack in some cases, due to Rust and incremental builds
+🧱 Incremental bundling	Rebuilds only changed files, not the whole project
+🧩 Built into Next.js 13+	You get it automatically when you run next dev
+🔁 Hot Module Reload (HMR)	Lightning-fast live reloads during development
+📦 Drop-in Webpack replacement	Aims to fully replace Webpack in the future
+🏗 Example: Webpack vs Turbopack (Next.js)
+
+In older Next.js versions (≤12):
+
+Next.js used Webpack 5 under the hood.
+
+In newer Next.js (13+):
+
+It uses Turbopack for dev mode automatically.
+
+You can enable it explicitly with:
+
+next dev --turbo
+
+🧩 3. Comparison Table
+Feature	Webpack	Turbopack
+Language	JavaScript	Rust
+Speed	Slower (especially for large projects)	Very fast (incremental builds)
+Caching	Full rebuilds	Partial rebuilds (incremental)
+Used in	React, Vue, Angular, Next.js (≤v12)	Next.js 13+ (by default)
+Maturity	Stable & widely used	New & evolving
+⚙️ 4. Example: Why you might care
+
+When developing a React or Next.js app:
+
+Webpack bundles all your JS and assets.
+
+Turbopack (in Next.js 13+) makes that process much faster.
+
+So, when you run:
+
+npm run dev
+
+
+Next.js uses Turbopack to bundle your code, handle hot reloads, and update only what changed — giving you almost instant feedback during development.
+
+🧠 Summary
+Concept	Explanation
+Webpack	A JavaScript-based bundler that compiles and optimizes your code for browsers.
+Turbopack	A new Rust-based bundler by Vercel, designed to be much faster and integrated into Next.js.
+Relation	Turbopack is the next evolution of Webpack, built for speed and scalability.
+
+✅ In short:
+
+Webpack = The classic JS bundler.
+Turbopack = Webpack’s modern, faster replacement built in Rust (used by Next.js 13+).
+
+Q7: What is babel:
+
+A: Babel is a JavaScript compiler (or transpiler) that allows developers to write modern JavaScript (ES6/ES7/ESNext) and run it in older browsers or environments that don’t natively support those features.
+
+Let’s break it down 👇
+
+🧠 What Babel Does
+
+When you write modern JS like:
+
+const greet = (name) => `Hello, ${name}`;
+
+
+Older browsers (like IE11) can’t understand this syntax.
+Babel compiles (transpiles) it into equivalent, backward-compatible code:
+
+var greet = function(name) {
+  return "Hello, " + name;
+};
+
+⚙️ How Babel Works
+
+Babel typically performs 3 steps:
+
+Parsing – Reads your modern JS and converts it into an Abstract Syntax Tree (AST).
+
+Transforming – Applies plugins or presets to modify that AST (e.g., turn arrow functions into ES5 functions).
+
+Generating – Outputs standard JavaScript code that browsers can execute.
+
+🧩 Common Babel Presets
+
+@babel/preset-env → Converts modern JS to ES5 syntax.
+
+@babel/preset-react → Transforms JSX (used in React) into plain JS.
+
+@babel/preset-typescript → Compiles TypeScript to JS.
+
+💡 Why Babel Is Important
+
+Ensures cross-browser compatibility.
+
+Enables developers to use cutting-edge JS features safely.
+
+Essential in modern build tools like Webpack, Vite, Parcel, Next.js, etc.
+
+Q8: What is Axios Interceptors?
+
+A: 🧩 What are Axios Interceptors?
+
+Axios interceptors are functions that run automatically before a request is sent or before a response is handled.
+They let you intercept and modify requests or responses globally — without changing every API call manually.
+
+⚙️ Types of Interceptors
+
+There are two types:
+
+1.Request Interceptors
+
+Run before a request is sent to the server.
+
+Commonly used to:
+
+Attach authentication tokens
+
+Log requests
+
+Show loading indicators
+
+2.Response Interceptors
+
+Run after the server sends back a response.
+
+Commonly used to:
+
+Handle errors globally (e.g., token expired)
+
+Transform response data
+
+Hide loaders
+
+⚡ Key Points for Interviews
+
+Interceptors are middleware between your app and API.
+
+You can cancel, retry, or modify requests/responses.
+
+Always return the config or response inside interceptors.
+
+Commonly used for JWT token handling and error management.
+
+Q9: Where do you store the jwt token?
+
+A: 🗝️ 1. Local Storage
+localStorage.setItem("token", jwt);
+
+✅ Pros:
+
+Very easy to implement.
+
+Persistent — even after page refresh or browser restart.
+
+❌ Cons:
+
+Vulnerable to XSS attacks:
+If someone injects malicious JS, they can read tokens from localStorage.
+
+Should never be used for highly sensitive apps (like banking).
+
+🍪 2. HTTP-only Cookies (Recommended for production)
+
+Store the JWT in an HTTP-only, Secure cookie set by the server.
+
+✅ Pros:
+
+Most secure option — JS cannot access HttpOnly cookies.
+
+Cookies are automatically sent with every request to your API.
+
+Helps protect against XSS.
+
+❌ Cons:
+
+Slightly more complex setup (need backend config for cookies and CORS).
+
+Must protect against CSRF attacks (using SameSite or CSRF tokens).
+
+Example (Express backend):
+
+res.cookie("jwt", token, {
+  httpOnly: true,
+  secure: true,
+  sameSite: "Strict",
+});
+
+
+Then in your frontend:
+
+axios.get("/api/user", { withCredentials: true });
+
+💾 3. Session Storage
+sessionStorage.setItem("token", jwt);
+
+✅ Pros:
+
+Token is cleared automatically when tab/browser is closed.
+
+Safer than localStorage against persistent XSS (less exposure).
+
+❌ Cons:
+
+Still accessible via JS.
+
+Doesn’t persist across tabs or after closing the browser.
+
+🧠 4. In-Memory (React State or Context)
+
+Store the token only in memory (e.g., React context).
+
+✅ Pros:
+
+Token never touches disk (localStorage/sessionStorage), so it’s immune to XSS.
+
+Good for short-lived sessions.
+
+❌ Cons:
+
+Lost on refresh — you’ll need a refresh token in a cookie to re-authenticate.
+
+🏆 Best Practice
+
+In a secure production setup:
+
+Store access tokens in memory (React state/context).
+
+Store refresh tokens in HTTP-only cookies.
+
+Use the refresh token to silently get a new access token when it expires.
+
+This is how most secure apps (like Google, GitHub) do it.
+
+🧩 Example Flow:
+
+User logs in → server sends accessToken + sets refreshToken cookie.
+
+Frontend stores accessToken in memory.
+
+Every API call includes the Authorization: Bearer <accessToken> header.
+
+When accessToken expires, frontend requests a new one using the cookie-based refresh token.
+
+Q10: What is CORS?
+
+A: CORS (Cross-Origin Resource Sharing) is a browser security mechanism that controls which domains are allowed to access resources (like APIs, images, or fonts) on a different domain.
+
+In simple terms:
+
+CORS decides whether your frontend (e.g. http://localhost:3000) is allowed to talk to your backend (e.g. https://api.example.com).
+
+💡 Why is CORS Needed?
+
+Modern browsers follow a rule called the Same-Origin Policy, which means:
+
+A web page can only make requests to the same domain, port, and protocol it was loaded from.
+
+For example:
+
+Frontend Origin	Backend Origin	Allowed?
+http://localhost:3000	http://localhost:3000	✅ Yes (same origin)
+http://localhost:3000	http://localhost:5000	❌ No (different port)
+https://myapp.com	https://api.myapp.com	❌ No (different subdomain)
+
+That’s where CORS comes in — it’s a way for the backend to say:
+
+“Hey browser, it’s okay for this frontend domain to call my API.”
+
+⚙️ How It Works
+
+When your frontend makes a cross-origin request, the browser sends a preflight request (an OPTIONS request) to the backend asking for permission.
+
+Example:
+
+OPTIONS /api/data HTTP/1.1
+Origin: http://localhost:3000
+Access-Control-Request-Method: GET
+
+
+If the backend allows it, it responds with headers like:
+
+Access-Control-Allow-Origin: http://localhost:3000
+Access-Control-Allow-Methods: GET, POST, PUT
+Access-Control-Allow-Headers: Content-Type, Authorization
+
+
+Then, the browser proceeds with the actual request.
+
+🧩 Example in Express.js (Node.js backend)
+import express from "express";
+import cors from "cors";
+
+const app = express();
+
+app.use(cors({
+  origin: "http://localhost:3000",  // frontend URL
+  credentials: true,                // allow cookies
+}));
+
+app.get("/api/data", (req, res) => {
+  res.json({ message: "CORS works fine!" });
+});
+
+app.listen(5000, () => console.log("Server running on port 5000"));
+
+🔒 Common Errors
+
+If CORS is not configured properly, you’ll see an error like:
+
+Access to fetch at 'https://api.example.com/data'
+from origin 'http://localhost:3000' has been blocked by CORS policy.
+
+
+This means your backend didn’t explicitly allow that frontend domain.
+
+✅ TL;DR
+Concept	Meaning
+CORS	Browser mechanism to allow cross-domain requests
+Same-Origin Policy	Default browser rule blocking other origins
+Preflight Request	OPTIONS request browser sends to check permissions
+Fix	Add Access-Control-Allow-Origin and related headers on the backend
+
+Q11: Eslint and tree shaking
+
+A: Linting
+Definition
+Linting is the process of analyzing your code to find errors, bugs, or style issues before the code runs.
+
+It’s like a spell-checker for your code — it helps maintain clean, consistent, and error-free JavaScript.
+
+How It Works
+
+A linter scans your source code and checks it against a set of rules (like variable naming, unused imports, missing semicolons, etc.).
+
+If it finds issues, it warns or errors out — depending on configuration
+
+Tools Used
+
+ESLint → for JavaScript/React
+
+Prettier → for consistent formatting
+
+TSLint → (old, now merged with ESLint for TypeScript)
+
+Tree Shaking
+Definition
+
+Tree shaking is the process of removing unused or “dead” code from your final JavaScript bundle to make it smaller and faster.
+It’s a feature used by bundlers like Webpack, Vite, or Parcel during the build process.
+
+How It Works
+
+Modern JavaScript uses ES Modules (import / export).
+
+The bundler analyzes which imports and exports are actually used.
+
+It “shakes off” unused parts of the dependency tree.

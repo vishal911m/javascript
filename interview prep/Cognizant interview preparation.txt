@@ -1,0 +1,7 @@
+Q1: “How do you manage styling when creating a React component? Do you create a separate CSS file for it?”
+
+A: It depends on the project’s architecture and scale.
+For smaller components or apps, I might use a separate CSS or CSS Module file.
+For scalable or design-system-based applications, I prefer using utility-first frameworks like Tailwind CSS, or CSS-in-JS libraries like 
+Styled Components or Emotion for better component encapsulation and theming.
+My main goal is always clean, maintainable, and scalable UI design.

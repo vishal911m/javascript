@@ -1,0 +1,392 @@
+Interview Date: 12/11/2025
+
+Q1: Bubbling
+Q2: Debouncing
+Q3: Throttling
+Q4: Event Loop
+Q5: Microtask queue
+Q6: Redux/redux toolkit
+Q7: useEffect - Lifecycle of useEffect
+Q8: SCSS
+Q9: Webpack
+Q10: Prepend "Mr." to ["Vishal", "Mohan", "Subramani"]
+
+🌀 1. Event Bubbling
+
+What it is:
+In JavaScript, when an event (like a click) happens on an element, it first runs the handler on that element, then "bubbles up" to its parent 
+elements, triggering their handlers if present — and so on, up to the root (document).
+
+Example:
+
+<div id="parent">
+  <button id="child">Click me</button>
+</div>
+
+document.getElementById("parent").addEventListener("click", () => {
+  console.log("Parent clicked");
+});
+document.getElementById("child").addEventListener("click", () => {
+  console.log("Child clicked");
+});
+
+
+Output (when you click the button):
+
+Child clicked
+Parent clicked
+
+
+You can stop bubbling using:
+
+event.stopPropagation();
+
+⚡ 2. Debouncing
+
+What it is:
+Debouncing ensures that a function is executed only after a certain amount of time has passed since the last time it was invoked.
+It’s useful for events that fire repeatedly, like scroll, resize, or input.
+
+Example (search box):
+
+function debounce(fn, delay) {
+  let timeout;
+  return function (...args) {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => fn.apply(this, args), delay);
+  };
+}
+
+const handleSearch = debounce(() => {
+  console.log("Searching...");
+}, 500);
+
+document.getElementById("search").addEventListener("input", handleSearch);
+
+
+👉 The function runs only after the user stops typing for 500ms.
+
+🚀 3. Throttling
+
+What it is:
+Throttling ensures a function is called at most once every given time interval, no matter how many times the event occurs.
+It’s great for scroll or resize events where you need steady updates, not too frequent.
+
+Example:
+
+function throttle(fn, delay) {
+  let last = 0;
+  return function (...args) {
+    const now = Date.now();
+    if (now - last >= delay) {
+      fn.apply(this, args);
+      last = now;
+    }
+  };
+}
+
+const handleScroll = throttle(() => {
+  console.log("Scrolling...");
+}, 1000);
+
+window.addEventListener("scroll", handleScroll);
+
+
+👉 Runs once every second even if you scroll continuously.
+
+🔄 4. Event Loop
+
+What it is:
+The Event Loop is the mechanism that makes JavaScript asynchronous, despite being single-threaded.
+It constantly checks the call stack and the callback queue (or microtask queue) to determine what to execute next.
+
+Flow:
+
+JS executes code line by line (synchronously).
+
+Async tasks (like setTimeout, fetch, Promises) go to Web APIs.
+
+Once done, they move to callback queues.
+
+The Event Loop pushes them back to the call stack when it’s empty.
+
+Example:
+
+console.log("Start");
+
+setTimeout(() => console.log("Timeout"), 0);
+
+Promise.resolve().then(() => console.log("Promise"));
+
+console.log("End");
+
+
+Output:
+
+Start
+End
+Promise
+Timeout
+
+
+👉 Promise (microtask) runs before Timeout (macrotask).
+
+🧠 What Is a Microtask?
+
+In JavaScript, microtasks are small, high-priority asynchronous tasks that are queued to run immediately after the current synchronous code 
+finishes, but before the event loop continues to the next macro (or normal) task.
+
+They form part of the Event Loop architecture — which powers all modern frontend runtimes (like browsers or Node.js).
+
+🪜 Task Queue Hierarchy (Frontend Runtime Architecture)
+
+You can think of the JavaScript runtime (in the browser) as having these layers:
+
+Type				Examples													When it runs
+Call Stack			Normal synchronous JS										Immediately
+Microtask Queue		Promises, MutationObserver, queueMicrotask()				Right after the current stack is empty
+Macrotask (Callback) Queue	setTimeout, setInterval, setImmediate, I/O events	After microtasks are cleared
+⚙️ How the Event Loop Works with Microtasks
+
+Execute synchronous code (the current stack).
+
+When stack is empty → check the microtask queue.
+
+Execute all microtasks (in order).
+
+Once all microtasks are done → pick the next macrotask (like setTimeout) from the event queue.
+
+Repeat forever.
+
+📘 Example
+console.log("A");
+
+setTimeout(() => console.log("B"), 0);
+
+Promise.resolve().then(() => console.log("C"));
+
+console.log("D");
+
+
+Output:
+
+A
+D
+C
+B
+
+
+Explanation:
+
+A and D → normal synchronous code.
+
+C → Promise (microtask), runs before any macrotasks.
+
+B → setTimeout (macrotask), runs last.
+
+🧩 Microtasks in Frontend Architecture
+
+In frontend architecture, the concept of microtasks affects:
+
+UI rendering timing
+
+Reactivity frameworks like React, Vue, or Svelte
+
+Performance optimizations (batching state updates)
+
+🎨 5. SCSS (Sassy CSS)
+
+What it is:
+SCSS is a CSS preprocessor that adds superpowers to normal CSS — like variables, nesting, mixins, and functions.
+
+Example:
+
+$primary-color: #4f46e5;
+
+.button {
+  background: $primary-color;
+  color: white;
+
+  &:hover {
+    background: darken($primary-color, 10%);
+  }
+}
+
+
+This compiles into:
+
+.button {
+  background: #4f46e5;
+  color: white;
+}
+.button:hover {
+  background: #3e37b8;
+}
+
+
+Use case:
+Helps maintain cleaner, modular, and reusable styles — especially in large projects.
+
+⚙️ 6. Webpack
+
+What it is:
+Webpack is a module bundler for JavaScript applications.
+It takes all your JS, CSS, images, etc., processes them (via loaders and plugins), and bundles them into optimized files for the browser.
+
+Example:
+
+Entry: src/index.js
+
+Output: dist/bundle.js
+
+Loaders handle files like .scss, .jsx, .png, etc.
+
+Plugins optimize output (like HtmlWebpackPlugin).
+
+Typical use case:
+React/Vue apps often use Webpack to bundle and serve files efficiently.
+
+Example config (simplified):
+
+// webpack.config.js
+module.exports = {
+  entry: "./src/index.js",
+  output: {
+    filename: "bundle.js",
+    path: __dirname + "/dist"
+  },
+  module: {
+    rules: [
+      { test: /\.scss$/, use: ["style-loader", "css-loader", "sass-loader"] }
+    ]
+  }
+};
+
+
+Would you like me to explain how debounce vs throttle differ visually — like with a timing diagram or analogy? It helps make that concept 
+super clear.
+
+
+
+Q: const [names, setNames] = useState(["Vishal", "Mohan", "Subramani"]); --- now add "Mr" to the names
+
+Perfect — since you’re using React state, you can update the array using the setter function setNames with the functional form of state update or directly with map().
+
+Here’s how you can do it 👇
+
+✅ Option 1: Simple one-time update
+setNames(names.map(name => "Mr " + name));
+
+✅ Option 2: Safer (functional update)
+
+This is better if you’re updating based on the previous state (e.g., inside an event handler):
+
+setNames(prevNames => prevNames.map(name => "Mr " + name));
+
+Q: tell me the lifecycle of use effect in comparison with the class component
+
+Excellent question — understanding the lifecycle of useEffect compared to class component lifecycle methods is a key React interview topic.
+
+Let’s go step-by-step 👇
+
+🧩 1. Class Component Lifecycle (Traditional Way)
+
+In class-based React components, lifecycle methods let you hook into different phases:
+
+Phase	Method	Description
+Mounting	constructor()	Initialize state, bind methods
+	componentDidMount()	Called once after the component is rendered to the DOM
+Updating	componentDidUpdate(prevProps, prevState)	Called after re-render when props or state change
+Unmounting	componentWillUnmount()	Called before the component is removed from the DOM (cleanup here)
+⚙️ 2. Functional Component Lifecycle (useEffect)
+
+In functional components, useEffect replaces the above lifecycle methods —
+it runs after render and reacts to dependencies.
+
+useEffect(() => {
+  // effect (side effect)
+  return () => {
+    // cleanup
+  };
+}, [dependencies]);
+
+🔄 3. Mapping Between Class Lifecycle and useEffect
+Class Component Method	Equivalent useEffect Pattern
+componentDidMount	useEffect(() => { ... }, []) → runs once after first render
+componentDidUpdate	useEffect(() => { ... }, [dependencies]) → runs whenever dependencies change
+componentWillUnmount	Cleanup function inside useEffect → return () => {...}
+Combination of Mount + Update	useEffect(() => { ... }) (no dependency array) → runs after every render
+🧠 Example Comparison
+🏗️ Class Component
+class Example extends React.Component {
+  componentDidMount() {
+    console.log("Mounted ✅");
+    window.addEventListener("resize", this.handleResize);
+  }
+
+  componentDidUpdate(prevProps) {
+    console.log("Updated 🔁");
+  }
+
+  componentWillUnmount() {
+    console.log("Unmounted ❌");
+    window.removeEventListener("resize", this.handleResize);
+  }
+
+  handleResize = () => console.log("Resized");
+
+  render() {
+    return <div>Hello Class Component</div>;
+  }
+}
+
+⚛️ Functional Component Equivalent
+import { useEffect } from "react";
+
+function Example() {
+  useEffect(() => {
+    console.log("Mounted ✅");
+    window.addEventListener("resize", handleResize);
+
+    // cleanup (runs before unmount or before next re-run)
+    return () => {
+      console.log("Unmounted ❌");
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []); // Empty dependency array → only on mount/unmount
+
+  const handleResize = () => console.log("Resized");
+
+  return <div>Hello Functional Component</div>;
+}
+
+🔍 4. Key Behavioral Differences
+Concept	Class Component	Functional Component
+When runs	Lifecycle methods are explicit (mount, update, unmount)	useEffect runs after render
+Combining logic	Multiple concerns may mix inside one lifecycle method	You can have multiple useEffects for different concerns
+Cleanup timing	componentWillUnmount runs once before unmount	Cleanup in useEffect runs before the effect re-runs and before unmount
+Re-render trigger	Re-renders when setState or props change	Re-renders when state or props change, and effects re-run based on dependency array
+📘 5. Summary
+Lifecycle Stage	Class Component	Functional Component
+Mount	componentDidMount()	useEffect(() => { ... }, [])
+Update	componentDidUpdate()	useEffect(() => { ... }, [dep])
+Unmount	componentWillUnmount()	return () => { ... } inside useEffect
+
+✅ In short:
+
+useEffect combines the behavior of componentDidMount, componentDidUpdate, and componentWillUnmount — depending on how you use the dependency 
+array.
+
+Q: Redux, redux toolkit
+Redux is a state management library for JavaScript applications, often used with React.
+It helps you manage global application state in a predictable way using a unidirectional data flow.
+
+🔄 Redux Core Principles
+Principle	Description
+1. Single Source of Truth	The entire app’s state is stored in one centralized object (store).
+2. State is Read-Only	You can’t directly modify the state. The only way is to dispatch an action (a plain JS object).
+3. Changes via Pure Functions	To specify how state changes, you use reducers — pure functions that take state and action, and return a new 
+state.
+
+A: If we click on a button, it despatches an action, which calls the redurer function, which updates the slice of our redux store.
+
