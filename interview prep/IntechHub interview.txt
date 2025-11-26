@@ -1,0 +1,342 @@
+IntechHub interview - 13/11/25
+
+1. Create a react app, on home page, create two inputs - username and password, on clicking the submit button, move to the second page 
+displaying hello! username
+2. Datatypes
+3. Types of list in HTML
+4. Selectors in css
+5. Suspense and lazy loading.
+6. React window (also called virtualization)
+7. tell me more about the hook useLayout()
+
+Q2. Datatypes
+
+A: In JavaScript, data types define what kind of values a variable can store. They fall into two major categories:
+
+🟦 1. Primitive Data Types
+
+Primitives are simple, immutable values. They are stored directly in memory and compared by value.
+
+✅ 7 Primitive Data Types:
+1️⃣ Number
+
+Represents all numbers (integer, float, NaN, Infinity)
+
+let age = 25;
+let price = 99.99;
+
+2️⃣ String
+
+Text enclosed in ' ', " ", or `template literals`
+
+let name = "Vishal";
+
+3️⃣ Boolean
+
+Only true or false
+
+let isLoggedIn = true;
+
+4️⃣ Undefined
+
+A variable declared but not assigned any value.
+
+let x;
+console.log(x); // undefined
+
+5️⃣ Null
+
+Represents an intentional empty value.
+
+let data = null;
+
+6️⃣ BigInt
+
+Used for very large integers beyond the safe range.
+
+let big = 9007199254740991n;
+
+7️⃣ Symbol
+
+Unique and immutable values, often used as object keys.
+
+let id = Symbol("id");
+
+🟩 2. Non-Primitive (Reference) Data Types
+
+These store references (memory addresses) rather than raw values.
+
+1️⃣ Object
+
+Key-value pairs.
+
+let user = { name: "John", age: 30 };
+
+2️⃣ Array
+
+Ordered list of items.
+
+let nums = [1, 2, 3];
+
+
+Arrays are actually objects internally.
+
+3️⃣ Function
+
+A callable object.
+
+function greet() {
+  console.log("Hello");
+}
+
+🧠 Important Notes
+✔️ Primitives are copied by value
+let a = 10;
+let b = a;
+b = 20; 
+// a remains 10
+
+✔️ Objects & arrays are copied by reference
+let obj1 = {name: "John"};
+let obj2 = obj1;
+obj2.name = "Mike";
+
+console.log(obj1.name); // Mike
+
+🔥 Special Values
+NaN
+
+Not a number:
+
+Number("abc") // NaN
+
+Infinity & -Infinity
+1/0  // Infinity
+-1/0 // -Infinity
+
+📌 Summary Table
+Category	Data Type	Example
+Primitive	Number	42
+Primitive	String	"Hello"
+Primitive	Boolean	true
+Primitive	Undefined	undefined
+Primitive	Null	null
+Primitive	BigInt	100n
+Primitive	Symbol	Symbol()
+Non-Primitive	Object	{}
+Non-Primitive	Array	[]
+Non-Primitive	Function	()
+
+
+i have work today, i will end it tomorrow
+
+Q3. Types of list in HTML
+
+A: Types of Lists in HTML
+
+HTML provides three main types of lists, each used for different purposes:
+
+1️⃣ Ordered List (<ol>)
+
+Used when the order or sequence matters, such as steps, rankings, instructions.
+
+Items are numbered automatically.
+
+Default numbering: 1, 2, 3...
+
+You can change numbering type using type="" (1, A, a, I, i)
+
+Example:
+<ol>
+  <li>Install Node.js</li>
+  <li>Create a project folder</li>
+  <li>Initialize npm</li>
+</ol>
+
+2️⃣ Unordered List (<ul>)
+
+Used when the order does not matter, like features, menu items, navigation bars.
+
+Bullets appear by default (●, ○, ■)
+
+Style can be customized with CSS.
+
+Example:
+<ul>
+  <li>React</li>
+  <li>Next.js</li>
+  <li>Node.js</li>
+</ul>
+
+3️⃣ Definition List (<dl>)
+
+Used for term + description pairs.
+
+Inside it:
+
+<dt> → term
+
+<dd> → description
+
+Typically used for FAQs, glossaries, key-value pairs.
+
+Example:
+<dl>
+  <dt>HTML</dt>
+  <dd>HyperText Markup Language</dd>
+
+  <dt>API</dt>
+  <dd>Application Programming Interface</dd>
+</dl>
+
+💡 Additional Notes (Good to mention in interviews)
+✔ Lists can be nested
+<ul>
+  <li>Frontend
+    <ol>
+      <li>React</li>
+      <li>Next.js</li>
+    </ol>
+  </li>
+</ul>
+
+✔ Lists improve accessibility and SEO
+
+Screen readers understand lists better, improving structure.
+
+✔ You can style lists using CSS
+
+Remove bullets:
+
+ul {
+  list-style: none;
+}
+
+✔ Ordered lists can start from any number
+<ol start="5">
+  <li>Item</li>
+</ol>
+
+⭐ Perfect Short Answer for Interview
+
+“HTML supports three types of lists:
+(1) Ordered lists (<ol>) used when sequence matters,
+(2) Unordered lists (<ul>) used when order doesn’t matter, and
+(3) Definition lists (<dl>) used for term–description pairs.
+Lists can be nested, styled with CSS, and improve both accessibility and content structure.”
+
+Here’s a 30-second interview version:
+
+“HTML provides three types of lists.
+First is the ordered list (<ol>), which shows items in a specific sequence using numbers.
+Second is the unordered list (<ul>), which uses bullet points when order doesn’t matter.
+And third is the definition list (<dl>), used for term–description pairs like in glossaries.
+These lists help structure content better, improve readability, and can be fully styled using CSS.”
+
+Q4: Tell me about css selectors
+
+A: CSS selectors are patterns used to select and style HTML elements.
+They tell the browser which elements to apply styles to.
+
+The main types of CSS selectors are:
+
+1️⃣ Universal Selector (*)
+
+Selects all elements.
+
+* { margin: 0; }
+
+2️⃣ Type Selector (Element Selector)
+
+Selects elements by tag name.
+
+p { color: blue; }
+
+3️⃣ Class Selector (.class)
+
+Selects elements with a specific class.
+
+.card { padding: 10px; }
+
+4️⃣ ID Selector (#id)
+
+Selects a single unique element.
+
+#header { background: black; }
+
+5️⃣ Attribute Selector
+
+Selects elements based on attributes.
+
+input[type="email"] { border: 1px solid red; }
+
+6️⃣ Pseudo-Class Selector
+
+Selects elements in a specific state.
+
+button:hover { background: green; }
+
+7️⃣ Pseudo-Element Selector
+
+Selects part of an element.
+
+p::first-letter { font-size: 30px; }
+
+8️⃣ Combinators
+
+Define relationships between selectors:
+
+Descendant (A B)
+
+Child (A > B)
+
+Adjacent sibling (A + B)
+
+General sibling (A ~ B)
+
+Example:
+
+div > p { color: purple; }
+
+⭐ Perfect 30-second Interview Version
+
+“CSS selectors are used to target HTML elements for styling.
+We have basic selectors like universal (*), element, class (.), and ID (#).
+We also have attribute selectors for selecting elements based on attributes, pseudo-classes like :hover to style elements in a particular state, and pseudo-elements like ::before to style parts of an element.
+Additionally, combinators let us select elements based on relationships—for example, child or sibling selectors.”
+
+Q5: Suspense and lazy loading:
+
+A: Lazy loading in React means loading components only when they are needed, instead of loading everything upfront. This helps reduce the initial bundle size and improves performance. React provides the React.lazy() function to load components dynamically.
+
+Suspense works together with lazy loading. It allows you to show a fallback UI (like a loader or spinner) while the lazy component is being downloaded. Suspense basically waits for the lazy component to finish loading before rendering it.
+
+Together, lazy() + Suspense help optimize performance and make React apps load faster.
+
+✅ Example (Good to mention in interview)
+const LazyDashboard = React.lazy(() => import("./Dashboard"));
+
+function App() {
+  return (
+    <Suspense fallback={<p>Loading...</p>}>
+      <LazyDashboard />
+    </Suspense>
+  );
+}
+
+
+Here:
+
+React.lazy() → splits code and loads Dashboard only when needed
+
+<Suspense> → shows “Loading...” until Dashboard loads
+
+🎯 30-Second Version
+
+“React.lazy is used for lazy loading components so they are loaded only when needed, which reduces the initial bundle size. Suspense is the wrapper that shows a fallback UI like a loader while the lazy component is being fetched. Together, they improve app performance by enabling code splitting and avoiding unnecessary loading.”
+
+🎯 10-Second Version
+
+“Lazy loading delays loading components until needed. Suspense provides a fallback UI while those components load.”
+
+If you want, I can also explain how code splitting works internally, or give a Next.js version of the same answer.
