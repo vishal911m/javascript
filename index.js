@@ -1064,3 +1064,38 @@ const numbers = [1, 2, 3, 4];
 const doubled = numbers.map(num => num * 2);     // map() takes a callback
 const evens = numbers.filter(num => num % 2 === 0); // filter()
 const sum = numbers.reduce((acc, num) => acc + num, 0); // reduce()
+
+// Currying and closure in javascript
+
+// A normal function that takes two numbers and logs their product  
+let multiply = function(x,y){
+  console.log(x * y);
+}
+
+// Using .bind() to create a new function where 'x' is permanently set to 2
+// bind(this, 2) --> the first argument '2' becomes the fixed value of x
+let multiplyByTwo = multiply.bind(this, 2);
+
+// Calling the new function with y = 3
+// Internally it runs multiply(2, 3)
+multiplyByTwo(3); // Output: 6
+
+// Another bound function where 'x' is fixed to 3
+let multiplyByThree = multiply.bind(this, 3);
+
+// Calling the function with y = 5
+// Internally it runs multiply(3, 5)
+multiplyByThree(5); // Output: 15
+
+// Closure
+let multiply1 = function(x){
+  return function (y){
+    console.log(x * y);
+  }
+}
+
+let multiplyBy2 = multiply1(2);
+multiplyBy2(3);
+
+let multiplyBy3 = multiply1(3);
+multiplyBy3(3);
