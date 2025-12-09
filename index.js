@@ -1107,7 +1107,7 @@ multiplyBy3(3);
 var original = [true, true, undefined, false, null];
 
 // slice
-var copy1 = original.slice(0);
+var copy1 = original.slice(0); // .slice(0) means “Give me a new array starting from index 0 until the end.”
 
 
 // spread operator
