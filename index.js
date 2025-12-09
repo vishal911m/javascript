@@ -319,11 +319,11 @@ function counter(){
   var count = 0;
   this.incrementCounter = function(){
     count++;
-    console.log(count);
+    // console.log(count);
   } 
   this.decrementCounter = function(){
     count--;
-    console.log(count);
+    // console.log(count);
   } 
 }
 var counter1 = new counter();
@@ -337,7 +337,7 @@ counter1.decrementCounter();
 function a(){
   var x= 0;
   return function b(){
-    console.log(x);
+    // console.log(x);
   }
 }
 
@@ -1069,7 +1069,7 @@ const sum = numbers.reduce((acc, num) => acc + num, 0); // reduce()
 
 // A normal function that takes two numbers and logs their product  
 let multiply = function(x,y){
-  console.log(x * y);
+  // console.log(x * y);
 }
 
 // Using .bind() to create a new function where 'x' is permanently set to 2
@@ -1090,7 +1090,7 @@ multiplyByThree(5); // Output: 15
 // Closure
 let multiply1 = function(x){
   return function (y){
-    console.log(x * y);
+    // console.log(x * y);
   }
 }
 
@@ -1099,3 +1099,32 @@ multiplyBy2(3);
 
 let multiplyBy3 = multiply1(3);
 multiplyBy3(3);
+
+// #############################################################################################################################################
+
+//Deep copy vs shallow copy 
+
+var original = [true, true, undefined, false, null];
+
+// slice
+var copy1 = original.slice(0);
+
+
+// spread operator
+var copy2 = [...original];
+// console.log(copy1, copy2);
+
+
+// DEEP copying
+var deepArray = [["freeCodeCamp"]];
+var shallowCopy = deepArray.slice(0);
+
+// shallowCopy[0].push("is great");
+// console.log(deepArray[0], shallowCopy[0])
+
+var deepCopy = JSON.parse(JSON.stringify(deepArray));
+
+deepCopy[0].push("is great");
+console.log(deepArray[0], deepCopy[0])
+
+// ################################################################################################################################################
