@@ -411,13 +411,26 @@ var y = a();  // once this a execution has finished, the memory of x is supposed
 
 // what is a callback function in javascript
 
-// function eventListener(){
-//   let count=0;
-//   document.getElementById("clickMe").addEventListener("click", function click(){
-//   console.log("Button clicked", ++count);
-// });
-// };
-// eventListener();
+setTimeout(function(){
+  console.log("timer")
+},5000)
+
+function x(y){
+  console.log("x");
+  y();
+}
+
+x(function y(){
+  console.log("y");
+});
+
+function eventListener(){
+  let count=0;
+  document.getElementById("clickMe").addEventListener("click", function click(){
+  console.log("Button clicked", ++count);
+});
+};
+eventListener();
 
 // Javascript is a synchronous and single-threaded language
 
@@ -1059,72 +1072,72 @@ var y = a();  // once this a execution has finished, the memory of x is supposed
 
 // map, filter, reduce example:
 
-const numbers = [1, 2, 3, 4];
+// const numbers = [1, 2, 3, 4];
 
-const doubled = numbers.map(num => num * 2);     // map() takes a callback
-const evens = numbers.filter(num => num % 2 === 0); // filter()
-const sum = numbers.reduce((acc, num) => acc + num, 0); // reduce()
+// const doubled = numbers.map(num => num * 2);     // map() takes a callback
+// const evens = numbers.filter(num => num % 2 === 0); // filter()
+// const sum = numbers.reduce((acc, num) => acc + num, 0); // reduce()
 
-// Currying and closure in javascript
+// // Currying and closure in javascript
 
-// A normal function that takes two numbers and logs their product  
-let multiply = function(x,y){
-  // console.log(x * y);
-}
+// // A normal function that takes two numbers and logs their product  
+// let multiply = function(x,y){
+//   // console.log(x * y);
+// }
 
-// Using .bind() to create a new function where 'x' is permanently set to 2
-// bind(this, 2) --> the first argument '2' becomes the fixed value of x
-let multiplyByTwo = multiply.bind(this, 2);
+// // Using .bind() to create a new function where 'x' is permanently set to 2
+// // bind(this, 2) --> the first argument '2' becomes the fixed value of x
+// let multiplyByTwo = multiply.bind(this, 2);
 
-// Calling the new function with y = 3
-// Internally it runs multiply(2, 3)
-multiplyByTwo(3); // Output: 6
+// // Calling the new function with y = 3
+// // Internally it runs multiply(2, 3)
+// multiplyByTwo(3); // Output: 6
 
-// Another bound function where 'x' is fixed to 3
-let multiplyByThree = multiply.bind(this, 3);
+// // Another bound function where 'x' is fixed to 3
+// let multiplyByThree = multiply.bind(this, 3);
 
-// Calling the function with y = 5
-// Internally it runs multiply(3, 5)
-multiplyByThree(5); // Output: 15
+// // Calling the function with y = 5
+// // Internally it runs multiply(3, 5)
+// multiplyByThree(5); // Output: 15
 
-// Closure
-let multiply1 = function(x){
-  return function (y){
-    // console.log(x * y);
-  }
-}
+// // Closure
+// let multiply1 = function(x){
+//   return function (y){
+//     // console.log(x * y);
+//   }
+// }
 
-let multiplyBy2 = multiply1(2);
-multiplyBy2(3);
+// let multiplyBy2 = multiply1(2);
+// multiplyBy2(3);
 
-let multiplyBy3 = multiply1(3);
-multiplyBy3(3);
+// let multiplyBy3 = multiply1(3);
+// multiplyBy3(3);
 
 // #############################################################################################################################################
 
-//Deep copy vs shallow copy 
+// //Deep copy vs shallow copy 
 
-var original = [true, true, undefined, false, null];
+// var original = [true, true, undefined, false, null];
 
-// slice
-var copy1 = original.slice(0); // .slice(0) means “Give me a new array starting from index 0 until the end.”
-
-
-// spread operator
-var copy2 = [...original];
-// console.log(copy1, copy2);
+// // slice
+// var copy1 = original.slice(0); // .slice(0) means “Give me a new array starting from index 0 until the end.”
 
 
-// DEEP copying
-var deepArray = [["freeCodeCamp"]];
-var shallowCopy = deepArray.slice(0);
+// // spread operator
+// var copy2 = [...original];
+// // console.log(copy1, copy2);
 
-// shallowCopy[0].push("is great");
-// console.log(deepArray[0], shallowCopy[0])
 
-var deepCopy = JSON.parse(JSON.stringify(deepArray));
+// // DEEP copying
+// var deepArray = [["freeCodeCamp"]];
+// var shallowCopy = deepArray.slice(0);
 
-deepCopy[0].push("is great");
-console.log(deepArray[0], deepCopy[0])
+// // shallowCopy[0].push("is great");
+// // console.log(deepArray[0], shallowCopy[0])
+
+// var deepCopy = JSON.parse(JSON.stringify(deepArray));
+
+// deepCopy[0].push("is great");
+// console.log(deepArray[0], deepCopy[0])
 
 // ################################################################################################################################################
