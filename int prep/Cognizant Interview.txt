@@ -37,6 +37,27 @@ So conceptually, JavaScript treats your loop like this:
 
 2. Each setTimeout callback closes over the i in its block.
 
+Callback Function: 
+
+A callback function is a function that you pass as an argument to another function, with the expectation that it 
+will be called later - usually after some operation finishes.
+Instead of running immediately, the callback gets executed at a specific time or event
+
+Simple example: 
+
+function greet(name, callback){
+  console.log("Hello" + name),
+  callback();
+}
+
+function sayBye(){
+  console.log("Goodbye !");
+}
+
+greet("Alice", sayBye);
+
+Key idea: A callback is about "don't call me now - call me when something is done"
+
 A closure means:
 
 A function “remembers” the variables from the scope where it was created — even after that scope has finished executing.
