@@ -238,6 +238,31 @@
 // }
 // z();
 
+// Additional topics: currying 
+
+// option 1: Using bind method
+let multiply = function (x,y) {
+  console.log(x * y);
+}
+
+let multiplyByTwo = multiply.bind(this, 2);
+// multiplyByTwo(5);
+
+let multiplyByThree = multiply.bind(this, 3);
+// multiplyByThree(5)
+
+// Option 2: Using closure:
+let mutiply = function (x) {
+  return function (y) {
+    console.log(x * y)
+  }
+}
+
+let mutiplyByTwo = mutiply(2);
+// mutiplyByTwo(10);
+
+let mutiplyByThree = mutiply(3);
+// mutiplyByThree(10);
 
 //ep10-end
 
@@ -315,33 +340,33 @@
 
 // ep12
 
-function counter(){
-  var count = 0;
-  this.incrementCounter = function(){
-    count++;
-    // console.log(count);
-  } 
-  this.decrementCounter = function(){
-    count--;
-    // console.log(count);
-  } 
-}
-var counter1 = new counter();
+// function counter(){
+//   var count = 0;
+//   this.incrementCounter = function(){
+//     count++;
+//     // console.log(count);
+//   } 
+//   this.decrementCounter = function(){
+//     count--;
+//     // console.log(count);
+//   } 
+// }
+// var counter1 = new counter();
 
-counter1.incrementCounter();
-counter1.incrementCounter();
-counter1.decrementCounter();
+// counter1.incrementCounter();
+// counter1.incrementCounter();
+// counter1.decrementCounter();
 
-// Garbage collector example
+// // Garbage collector example
 
-function a(){
-  var x= 0;
-  return function b(){
-    // console.log(x);
-  }
-}
+// function a(){
+//   var x= 0;
+//   return function b(){
+//     // console.log(x);
+//   }
+// }
 
-var y = a();  // once this a execution has finished, the memory of x is supposed to be deleted, but since we have formed a closure
+// var y = a();  // once this a execution has finished, the memory of x is supposed to be deleted, but since we have formed a closure
 // since we have b referencing x, that means it cannot freeup b. So if we form more closures, it accumulates more memory.
 
 
@@ -411,26 +436,26 @@ var y = a();  // once this a execution has finished, the memory of x is supposed
 
 // what is a callback function in javascript
 
-setTimeout(function(){
-  console.log("timer")
-},5000)
+// setTimeout(function(){
+//   console.log("timer")
+// },5000)
 
-function x(y){
-  console.log("x");
-  y();
-}
+// function x(y){
+//   console.log("x");
+//   y();
+// }
 
-x(function y(){
-  console.log("y");
-});
+// x(function y(){
+//   console.log("y");
+// });
 
-function eventListener(){
-  let count=0;
-  document.getElementById("clickMe").addEventListener("click", function click(){
-  console.log("Button clicked", ++count);
-});
-};
-eventListener();
+// function eventListener(){
+//   let count=0;
+//   document.getElementById("clickMe").addEventListener("click", function click(){
+//   console.log("Button clicked", ++count);
+// });
+// };
+// eventListener();
 
 // Javascript is a synchronous and single-threaded language
 
