@@ -316,7 +316,11 @@ function evaluate(operation){
   }
 }
 
-console.log(evaluate("sum")(4)(2));
+// console.log(evaluate("sum")(4)(2));
+
+const mul = evaluate("multiply");
+
+console.log(mul(3)(5))
 
 //ep10-end
 
