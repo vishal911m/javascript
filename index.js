@@ -277,7 +277,25 @@ function f(a){
   }
 }
 
-console.log(f(5)(6))
+// console.log(f(5)(6))
+
+// Question 1 - sum(2)(6)(1)
+
+// function sum(a,b,c){
+//   return a+b+c;
+// }
+
+// console.log(sum(2,6,4));
+
+function sum(a){
+  return function (b){
+    return function (c){
+      return a+b+c;
+    }
+  }
+}
+
+console.log(sum(2)(4)(1));
 
 //ep10-end
 
