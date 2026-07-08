@@ -264,6 +264,8 @@ let mutiplyByTwo = mutiply(2);
 let mutiplyByThree = mutiply(3);
 // mutiplyByThree(10);
 
+// ----------------------------------------------------------------------------------------------------------------------
+
 // freeCodeCamp.org
 
 // Currying in javascript
@@ -271,11 +273,11 @@ let mutiplyByThree = mutiply(3);
 
 function f(a){
   return function (b){
-    console.log(a,b)
+    return `${a} ${b}`;
   }
 }
 
-console.log(f(5))
+console.log(f(5)(6))
 
 //ep10-end
 
