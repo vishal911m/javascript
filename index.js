@@ -295,7 +295,28 @@ function sum(a){
   }
 }
 
-console.log(sum(2)(4)(1));
+// console.log(sum(2)(4)(1));
+
+/* Question 2 - 
+  evaluate("sum")(4)(2) => 6
+  evaluate("multiply")(4)(2) => 8
+  evaluate("divide")(4)(2) => 2
+  evaluate("subtract")(4)(2) => 2
+*/
+
+function evaluate(operation){
+  return function (a) {
+    return function (b) {
+      if (operation === "sum") return a+b;
+      else if (operation === "multiply") return a*b;
+      else if (operation === "divide") return a/b;
+      else if (operation === "subtract") return a-b;
+      else return "Invalid Operation";
+    }
+  }
+}
+
+console.log(evaluate("sum")(4)(2));
 
 //ep10-end
 
