@@ -264,6 +264,19 @@ let mutiplyByTwo = mutiply(2);
 let mutiplyByThree = mutiply(3);
 // mutiplyByThree(10);
 
+// freeCodeCamp.org
+
+// Currying in javascript
+// example f(a,b) into f(a)(b)
+
+function f(a){
+  return function (b){
+    console.log(a,b)
+  }
+}
+
+console.log(f(5))
+
 //ep10-end
 
 //procodr
