@@ -331,7 +331,34 @@ function add(a){
   };
 }
 
-console.log(add(5)(2)(4)(8)());
+// console.log(add(5)(2)(4)(8)());
+
+// Question 4 - Currying vs Partial Application
+
+// partial application
+function sum(a){
+  return function (b,c){
+    return a + b + c;
+  }
+}
+
+const x = sum(10);
+
+console.log(x(5,6));
+console.log( x(3,2));
+
+// or 
+
+console.log(sum(20)(1,4))
+
+// currying
+function sum1(a){
+  return function (b){
+    return function (c){
+      return a + b + c;
+    }
+  }
+}
 
 //ep10-end
 
