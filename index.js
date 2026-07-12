@@ -360,6 +360,18 @@ function sum1(a){
   }
 }
 
+// Question 5 - Manipulating DOM
+
+function updateElementText(id){
+  return function (content) {
+    document.querySelector("#" + id).textContent = content;
+  }
+}
+
+const updateHeader = updateElementText("heading");
+
+updateHeader("Hello ThingsCoder");
+
 //ep10-end
 
 //procodr
