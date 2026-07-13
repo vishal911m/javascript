@@ -344,12 +344,12 @@ function sum(a){
 
 const x = sum(10);
 
-console.log(x(5,6));
-console.log( x(3,2));
+// console.log(x(5,6));
+// console.log( x(3,2));
 
 // or 
 
-console.log(sum(20)(1,4))
+// console.log(sum(20)(1,4))
 
 // currying
 function sum1(a){
@@ -370,7 +370,28 @@ function updateElementText(id){
 
 const updateHeader = updateElementText("heading");
 
-updateHeader("Hello ThingsCoder");
+// updateHeader("Hello ThingsCoder");
+
+// Question 6 - curry() implementation
+// Converts f(a, b, c) into f(a)(b)(c)
+
+function curry (func){
+  return function curriedFunc(...args) {
+    if(args.length >= func.length){
+      return func(...args)
+    } else {
+      return function (...next){
+        return curriedFunc(...args, ...next);
+      };
+    }
+  };
+}
+
+const sum2 = (a, b, c) => a + b + c;
+
+const totalSum = curry(sum2);
+
+console.log(totalSum(1)(2)(3));
 
 //ep10-end
 
